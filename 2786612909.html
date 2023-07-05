@@ -3,15 +3,15 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Archives | Pengunix的博客</title>
+        <title>线性方程组解的情况及判别准则 | Pengunix的博客</title>
         <meta name="author" content="Pengunix" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="icon" href="../images/favicon.png" />
+        <link rel="icon" href="/images/favicon.png" />
         <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
-<link rel="stylesheet" href="../css/fonts.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -22,22 +22,26 @@
     rel="stylesheet"
     href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
 />
-<script src="../js/lib/highlight.js"></script>
+<script src="/js/lib/highlight.js"></script>
 
 
 <script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
 <script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
-<script src="../js/lib/math.js"></script>
+<script src="/js/lib/math.js"></script>
 
 
-<script src="../js/lib/preview.js"></script>
+<script src="/js/lib/preview.js"></script>
 
 
 
 
 
-<link rel="stylesheet" href="../css/main.css" />
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
 
     <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -51,7 +55,7 @@
                     <div id="loading-circle">
                         <h2>LOADING</h2>
                         <p>加载过慢请开启缓存 浏览器默认开启</p>
-                        <img src="../images/loading.gif" />
+                        <img src="/images/loading.gif" />
                     </div>
                 </div>
             </transition>
@@ -61,27 +65,27 @@
             <span>PENGUNIX的博客</span>
         </a>
         
-        <a href="../index.html">
+        <a href="index.html">
             <i class="fa-solid fa-house fa-fw"></i>
             <span>&ensp;Home</span>
         </a>
         
-        <a href="../about">
+        <a href="/about">
             <i class="fa-solid fa-id-card fa-fw"></i>
             <span>&ensp;About</span>
         </a>
         
-        <a href="../archives">
+        <a href="/archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
             <span>&ensp;Archives</span>
         </a>
         
-        <a href="../categories">
+        <a href="/categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
             <span>&ensp;Categories</span>
         </a>
         
-        <a href="../tags">
+        <a href="/tags">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
         </a>
@@ -95,7 +99,7 @@
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
                 
-                <a href="../index.html">
+                <a href="index.html">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-house fa-fw"></i>
@@ -104,7 +108,7 @@
                     </div>
                 </a>
                 
-                <a href="../about">
+                <a href="/about">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
@@ -113,7 +117,7 @@
                     </div>
                 </a>
                 
-                <a href="../archives">
+                <a href="/archives">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
@@ -122,7 +126,7 @@
                     </div>
                 </a>
                 
-                <a href="../categories">
+                <a href="/categories">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
@@ -131,7 +135,7 @@
                     </div>
                 </a>
                 
-                <a href="../tags">
+                <a href="/tags">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-tags fa-fw"></i>
@@ -150,114 +154,35 @@
 
             <transition name="into">
                 <div id="main" v-show="!loading">
-                    
-<div id="archives">
-    
-    <div id="timeline-wrap" ref="timeline">
+                    <div class="article">
+    <div>
+        <h1>线性方程组解的情况及判别准则</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/7/5
+        </span>
         
-        <div class="timeline" data-title="高等代数的研究对象">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2023/6/14</div>
-                <a href="../1290690816.html">
-                    <h3>高等代数的研究对象</h3>
-                </a>
-                <div class="info">
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="../tags/%E9%AB%98%E6%95%B0/" style="color: #ffa2c4">高数</a>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="../tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="color: #03a9f4">线性代数</a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="timeline" data-title="正则表达式">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2023/6/17</div>
-                <a href="../1674356899.html">
-                    <h3>正则表达式</h3>
-                </a>
-                <div class="info">
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="../tags/Python/" style="color: #03a9f4">Python</a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="timeline" data-title="第一节线性方程组的解法">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2023/6/18</div>
-                <a href="../2090960771.html">
-                    <h3>第一节 线性方程组的解法</h3>
-                </a>
-                <div class="info">
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="../tags/%E9%AB%98%E6%95%B0/" style="color: #00bcd4">高数</a>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="../tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="color: #ffa2c4">线性代数</a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="timeline" data-title="线性方程组解的情况及判别准则">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2023/7/5</div>
-                <a href="../2786612909.html">
-                    <h3>线性方程组解的情况及判别准则</h3>
-                </a>
-                <div class="info">
-                    
-                    
-                </div>
-            </div>
-        </div>
         
     </div>
+    
+    <div class="content" v-pre>
+        
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
 </div>
 
                     <footer id="footer">
@@ -295,7 +220,30 @@
             </transition>
             
         </div>
-        <script src="../js/main.js"></script>
+        <script src="/js/main.js"></script>
+        
+        
+<script
+    src="https://giscus.app/client.js"
+    data-repo="Pengunix/giscus"
+    data-repo-id="R_kgDOJyPwpA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOJyPwpM4CXXeR"
+    data-mapping="url"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
         
     </body>
 </html>
