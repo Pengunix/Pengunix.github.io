@@ -1,0 +1,1063 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/fav.png">
+  <link rel="icon" href="images/fav.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Pengunix">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="python 异步1.1 事件循环理解为一个死循环，检测并执行某些代码。 import asyncio # 生成或获取一个事件循环 loop &#x3D; asyncio.get_event_loop() # 将任务放入任务列表 loop.run_until_complete(任务)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="协程入门">
+<meta property="og:url" content="http://pengunix.github.io/2826090076.html">
+<meta property="og:site_name" content="Pengunix的博客">
+<meta property="og:description" content="python 异步1.1 事件循环理解为一个死循环，检测并执行某些代码。 import asyncio # 生成或获取一个事件循环 loop &#x3D; asyncio.get_event_loop() # 将任务放入任务列表 loop.run_until_complete(任务)">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-15T11:37:06.000Z">
+<meta property="article:modified_time" content="2023-10-29T04:32:32.658Z">
+<meta property="article:author" content="Pengunix">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>协程入门 - Pengunix的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"pengunix.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <strong>Pengunix的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="协程入门"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-15 19:37" pubdate>
+          July 15, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          67 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">协程入门</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="python-异步"><a href="#python-异步" class="headerlink" title="python 异步"></a>python 异步</h2><h3 id="1-1-事件循环"><a href="#1-1-事件循环" class="headerlink" title="1.1 事件循环"></a>1.1 事件循环</h3><p>理解为一个死循环，检测并执行某些代码。</p>
+<pre><code class="python">import asyncio
+# 生成或获取一个事件循环
+loop = asyncio.get_event_loop()
+# 将任务放入任务列表
+loop.run_until_complete(任务)
+</code></pre>
+<span id="more"></span>
+
+<h3 id="1-2-快速上手"><a href="#1-2-快速上手" class="headerlink" title="1.2 快速上手"></a>1.2 快速上手</h3><p>协程函数，定义函数使用 async def 关键字</p>
+<pre><code class="python">async def func():
+    ...
+</code></pre>
+<p>协程对象，执行协程函数得到的协程对象</p>
+<pre><code class="python">result = func()  # 得到协程对象，不会执行函数
+</code></pre>
+<p>如果想要运行协程函数内部代码，必须要将协程对象交给事件循环</p>
+<pre><code class="python"># 生成或获取一个事件循环
+loop = asyncio.get_event_loop()
+# 将任务放入任务列表
+loop.run_until_complete(result)
+# 或者
+asyncio.run(result) # python3.7+
+</code></pre>
+<h3 id="1-3-await-关键字"><a href="#1-3-await-关键字" class="headerlink" title="1.3 await 关键字"></a>1.3 await 关键字</h3><p>await 可等待的对象(协程对象，Future 对象，task 对象 -&gt; io 等待)</p>
+<pre><code class="python">import asyncio
+
+async def func():
+    ...
+    response = await asyncio.sleep(2)
+    print(response)
+result = func()
+asyncio.run(result)
+</code></pre>
+<pre><code class="python">import asyncio
+async def others():
+    print(&quot;start&quot;)
+    await asyncio.sleep(2)
+    print(&quot;end&quot;)
+    return &#39;return&#39;
+async def func():
+    print(&quot;code inside coroutine func&quot;)
+    response = awat others()
+    print(&quot;io req over&quot;)
+
+asyncio.run(func())
+</code></pre>
+<p>等待对象的值得到结果之后再往下进行</p>
+<h3 id="1-4-task-对象"><a href="#1-4-task-对象" class="headerlink" title="1.4 task 对象"></a>1.4 task 对象</h3><p>在事件循环中添加多个任务。</p>
+<p>用于并发调度协程，通过<code>asyncio.create_task(协程对象)</code>‘的方式创建 task 对象，这样可以让协程加入事件循环中等待被调度执行。除了使用<code>create_task</code>函数之外，还可用低层级的<code>loop.create_task()</code>或<code>ensure_future()</code>函数，不建议手动实例化 task 对象。</p>
+<pre><code class="python">import asyncio
+
+async def func():
+    print(1)
+    await asyncio.sleep(1)
+    print(2)
+    return &quot;return&quot;
+
+async def main():
+    print(&quot;main开始&quot;)
+    # 创建task对象，将当前执行的func函数任务添加到事件循环。
+    task1 = asyncio.create_task(func())
+    task2 = asyncio.create_task(func())
+    print(&quot;main结束&quot;)
+    # 当执行某协程遇到io操作时，会自动化切换成其他任务。
+    # 此处的await时等待相对应的协程全部执行完毕并获取结果
+    ret1 = await task1
+    ret2 = await task2
+    print(task1, task2)
+
+asyncio.run(main())
+</code></pre>
+<pre><code class="python">async def main():
+    print(&quot;main开始&quot;)
+    task_list = [
+        asyncio.create_task(func()),
+        asyncio.create_task(func())
+        ]
+    print(&quot;main结束&quot;)
+    # done 为返回值的集合
+    # timeout 最多等2秒
+    done, pending = await asyncio.wait(task_list, timeout=2)
+    print(done)
+asyncio.run(main())
+# OUTPUT:
+&#39;&#39;&#39;
+1
+1
+2
+2
+&#123;&lt;Task finished name=&#39;Task-3&#39; coro=&lt;func() done, defined at /home/naii/pypy/coroutine.py:4&gt; result=&#39;return&#39;&gt;, &lt;Task finished name=&#39;Task-2&#39; coro=&lt;func() done, defined at /home/naii/pypy/coroutine.py:4&gt; result=&#39;return&#39;&gt;&#125;
+&#39;&#39;&#39;
+</code></pre>
+<pre><code class="python"># 可在创建任务时指定name属性
+asyncio.create_task(func(), name=&#39;n1&#39;)
+</code></pre>
+<p>task 对象可将协程对象立即放入事件循环中</p>
+<h3 id="1-5-asyncio-future-对象"><a href="#1-5-asyncio-future-对象" class="headerlink" title="1.5 asyncio future 对象"></a>1.5 asyncio future 对象</h3><p>是 task 类的基类，task 对象内部 await 结果的处理基于 future 对象来的</p>
+<pre><code class="python">import asyncio
+
+async def func():
+    # 获取当前事件循环
+    loop = asyncio.get_running_loop()
+    # 创建一个任务（future对象），这个任务什么都不做
+    fut = loop.create_future()
+    # 等待任务最终结果（future对象），没有结束一直等下去。
+    await fut
+asyncio.run(func())
+# 此程序会一直阻塞下去
+</code></pre>
+<pre><code class="python">import asyncio
+
+async def set_after(fut):
+    await asyncio.sleep(2)
+    fut.set_result(&#39;666&#39;)
+
+async def main():
+    # 获取当前事件循环
+    loop = asyncio.get_event_loop()
+    # 创建一个任务（future对象），没有绑定任何行为，则这个任务不会结束
+    fut = loop.create_future()
+    # 创建一个任务（task对象）绑定了set_after函数，函数内部在2s后给fut赋值
+    # 相当于手动给fut赋值，那么fut就会结束了
+    await loop.create_task(set_after(fut))
+    # 等待future对象获取最终结果
+    data = await fut
+    print(data)
+
+asyncio.run(main())
+</code></pre>
+<h3 id="1-6-concurrent-futures-future-对象"><a href="#1-6-concurrent-futures-future-对象" class="headerlink" title="1.6 concurrent.futures.future 对象"></a>1.6 concurrent.futures.future 对象</h3><p>使用线程池、进程池来实现异步操作时用到的对象。</p>
+<pre><code class="python">import time
+from concurrent.futures import Future
+from concurrent.futures.thread import ThreadPoolExecutor
+from concurrent.futures.process import ProcessPoolExecutor
+
+def func(value):
+    time.sleep(1)
+    print(value)
+# 创建线程池
+pool = ThreadPoolExecutor(max_workers=5)
+# 或者 pool = ProcessPoolExecutor(max_workers=5) 创建进程池
+
+for i in range(10):
+    fut = pool.submit(func, i)
+    print(fut)
+</code></pre>
+<p>例如：crm 项目内部数据都是基于协程的+mysql（不支持）此时使用两者交叉使用</p>
+<pre><code class="python">import time
+import asyncio
+import concurrent.futures
+
+def func():
+    # 某个耗时操作
+    time.sleep(2)
+    return &quot;aa&quot;
+
+async def main():
+    loop = asyncio.get_running_loop()
+
+    # 1. Run in default loop&#39;s executor（默认ThreadPoolExecutor）
+    # 第一步：内部会先调用 ThreadPoolExecutor的submit方法去线程池中申请一个线程去执行func函数
+    # 并返回一个concurrent.futures.Future对象
+    # 第二步：调用asyncio.wrap_future将concurrent.futures.Future对象包装为asyncio.Future对象
+    # 因为concurrent.futures.Future对象不支持await语法，所以需要包装为asyncio.Future对象才能使用
+    fut = loop.run_in_executor(None, func)
+    result = await fut
+    print(&#39;default thread pool&#39;, result)
+
+    # 2. Run in a custom thread pool
+    # with concurrent.futures.ThreadPoolExecutor() as pool:
+    #   result = await loop.run_in_executor(pool.func1)
+    # print(result)
+
+asyncio.run(main())
+</code></pre>
+<p>案例：asyncio + 不支持异步的模块</p>
+<pre><code class="python">import asyncio
+from pip import main
+import requests
+
+async def download(url):
+    # 发送网络请求，下载图片（遇到网络下载图片的io请求，自动切换到其他任务）
+    print(&quot;开始下载&quot;, url)
+
+    loop = asyncio.get_event_loop()
+    # requests 模块默认不支持异步操作，所以就使用线程池来配合实现了。
+    future = loop.run_in_executor(None, requests.get, url)
+
+    response = await future
+
+    print(&quot;下载完成&quot;)
+    # 图片保存到本地
+    file_name = url.rsplit(&#39;_&#39;)[-1]
+    with open(file_name, mode=&#39;wb&#39;) as f:
+        f.write(response.content)
+if __name__ == &#39;__main__&#39;:
+    url_list = [...]
+
+    tasks = [download(url) for url in url_list]
+
+    loop = asyncio.get_event_loop()
+</code></pre>
+<h3 id="1-7-异步迭代器"><a href="#1-7-异步迭代器" class="headerlink" title="1.7 异步迭代器"></a>1.7 异步迭代器</h3><p>什么是异步迭代器</p>
+<p>实现了<code>__aiter__()</code>和<code>__anext__()</code>方法的对象，<code>__anext__</code>必须返回一个 awaitable 对象，async_for 会处理异步迭代器的<code>__anext__</code>()方法所返回的可等待对象，直至其引发一个 StopAsyncIteratin 异常</p>
+<p>什么是异步可迭代对象</p>
+<p>可在 async_for 语句中被使用的对象，必须通过他的<code>__aiter__()</code>方法返回一个 asyncchronous_iterator</p>
+<pre><code class="python">import asyncio
+
+class Reader(object):
+    # 自定义异步迭代器（同时也是异步可迭代对象）
+    def __init__(self) -&gt; None:
+        self.count = 0
+
+    async def readline(self):
+        # await asyncio.sleep(1)
+        self.count += 1
+        if self.count == 100:
+            return None
+
+        return self.count
+
+    def __aiter__(self):
+        return self
+
+    async def __anext__(self):
+        val = await self.readline()
+        if val == None:
+            raise StopAsyncIteration
+        return val
+
+async def func():
+    obj = Reader()
+    async for item in obj:
+        print(item)
+
+asyncio.run(func())
+</code></pre>
+<h3 id="1-8-异步上下文管理"><a href="#1-8-异步上下文管理" class="headerlink" title="1.8 异步上下文管理"></a>1.8 异步上下文管理</h3><p>这种对象通过定义<code>__aenter__()</code>和<code>__aexit__()</code>方法来对<code>async_with</code>语句中的环境进行控制。</p>
+<pre><code class="python">import asyncio
+
+
+class AsyncContextManager:
+    def __init__(self) -&gt; None:
+        self.conn = conn
+
+    async def do_something(self):
+        # 例如：异步操作数据库
+        return 666
+    async def __aenter__(self):
+        # 异步链接数据库
+        self.conn = await asyncio.sleep(1)
+        return self
+
+    async def __aexit__(self, exc_type, exc, tb):
+        # 异步关闭数据库
+        await asyncio.sleep(1)
+async def func():
+    obj = AsyncContextManager()
+    async with obj as f:
+        result = await f.do_something()
+        print(result)
+asyncio.run(func())
+</code></pre>
+<h3 id="1-9-uvloop"><a href="#1-9-uvloop" class="headerlink" title="1.9 uvloop"></a>1.9 uvloop</h3><p>是 asyncio 事件循环的替代方案。uvloop 事件循环的效率&gt;默认 asyncio 的事件循环。</p>
+<p>安装</p>
+<pre><code>pip install uvloop
+</code></pre>
+<pre><code class="python">import asyncio
+import uvloop
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
+# 编写asyncio的代码，没有变化
+# 内部的事件循环会自动变为uvloop
+asyncio.run(...)
+</code></pre>
+<p>注意：一个 asgi -&gt; <code>uvicorn</code> django3 fastapi 内部使用 uvloop</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="2-1-异步操作-redis"><a href="#2-1-异步操作-redis" class="headerlink" title="2.1 异步操作 redis"></a>2.1 异步操作 redis</h3><p>两台主机之间，操作 redis 时存在链接&#x2F;操作&#x2F;断开都是网络 io</p>
+<pre><code>pip install aioredis
+</code></pre>
+<pre><code class="python">import asyncio
+import aioredis
+
+async def executeimport asyncio
+import aioredis
+
+async def execute(address, password):
+    print(&#39;开始执行&#39;, address)
+    # 网络io操作：创建redis链接
+    redis = await aioredis.create_redis(address, password=password)
+    # 网络io操作：在redis中设置哈希值car，内部再设置三个键值对，即：
+    # redis = &#123;car: &#123;key1:1, key2:2, key3:3&#125;&#125;
+    await redis.hmset_dict(&#39;car&#39;, key1=1, key2=2, key3=3)
+
+    # 网络io操作：去redis中获取值
+    result = await redis.hgetall(&quot;car&quot;, encoding=&#39;utf-8&#39;)
+    print(resut)
+
+    redis.close()
+    # 网络io操作：关闭redis链接
+    await redis.wait_closed()
+
+asyncio.run( execute(&#39;...&#39;, &#39;...&#39;) )
+</code></pre>
+<pre><code class="python">task_list = [
+    execute(..., ...), # 不能在此处创建task对象，还未创建事件循环
+    execute(..., ...)
+]
+asyncio.run(asyncio.wait(task_list))
+</code></pre>
+<h3 id="2-2-异步操作-mysql"><a href="#2-2-异步操作-mysql" class="headerlink" title="2.2 异步操作 mysql"></a>2.2 异步操作 mysql</h3><pre><code>pip install aiomysql
+</code></pre>
+<pre><code class="python">import asyncio
+import aiomysql
+
+async def execute():
+    # 网络io操作：链接mysql
+    conn = await aiomysql.connect(host=&quot;127.0.0.1&quot;,
+                                  port=3306,
+                                  user=&quot;root&quot;,
+                                  password=&quot;123&quot;,
+                                  db=&#39;mysql&#39;)
+    # 网络io操作：创建cursor
+    cur = await conn.cursor()
+    # 网络io操作：执行sql
+    await cur.execute(&quot;select Host.User from user&quot;)
+    # 网络io操作：获取sql结果
+    result = cur.fetchall()
+    print(result)
+    # 网络io操作：关闭链接
+    await cur.close()
+    conn.close()
+
+asyncio.run(execute())
+</code></pre>
+<p>链接多个 mysql</p>
+<pre><code class="python">task_list = [
+    execute(..., ...),
+    execute(..., ...)
+]
+asyncio.run(asyncio.wait(task_list))
+</code></pre>
+<h3 id="2-3-fastapi-框架异步"><a href="#2-3-fastapi-框架异步" class="headerlink" title="2.3 fastapi 框架异步"></a>2.3 fastapi 框架异步</h3><p>安装</p>
+<pre><code>pip install fastapi
+pip install uvicorn # asgi
+</code></pre>
+<p>示例：</p>
+<pre><code class="python"># 同步写法
+import uvicorn
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get(&quot;/&quot;)
+def index():
+    # 普通操作接口
+    return &#123;&quot;message&quot;: &quot;hello&quot;&#125;
+#          脚本名称:app
+uvicorn.run(&quot;luffy:app&quot;, host=&quot;127.0.0.1&quot;, port=5000, log_level=&quot;info&quot;)
+</code></pre>
+<pre><code class="python"># 异步写法
+@app.get(&quot;/read&quot;)
+async def read():
+    # 异步操作接口
+    print(&quot;收到请求&quot;)
+    # 某个操作
+    await asyncio.sleep(3)
+    return 666
+</code></pre>
+<p>redis 链接池</p>
+<pre><code class="python">REDIS_POOL = aioredis.ConnectionsPoll(&quot;redis://../&quot;, password=&quot;&quot;, minsize=1, maxsize=10)
+@app.get(&#39;/redis&#39;)
+async def redis_read():
+    #  连接池获取一个连接
+    conn = await REDIS_POOL.acquire()
+    redis = Redis(conn)
+    # 设置值
+    await redis.hmset_dict(&#39;car&#39;, key1=1, key2=2)
+    # 读取值
+    result = await redis.hgetall(&#39;car&#39;, encoding=&#39;utf-8&#39;)
+    print(redult)
+    # 连接归还连接池
+    REDIS_POOL.release(conn)
+    return result
+</code></pre>
+<h3 id="2-4-异步爬虫"><a href="#2-4-异步爬虫" class="headerlink" title="2.4 异步爬虫"></a>2.4 异步爬虫</h3><pre><code>pip install aiohttp
+</code></pre>
+<pre><code class="python">import aiohttp
+import asyncio
+
+async def fetch(session, url):
+    print(&quot;发送请求&quot;, url)
+    async with session.get(url, verfy_ssl=False) as response:
+        text = await response.text()
+        print(&quot;得到结果&quot;, url, len(text))
+
+async def main():
+    async with aiohttp.ClientSession() as session:
+        url_list = [
+            ...,
+            ...
+        ]
+        tasks = [asyncio.create_task(fetch(session, url)) for url in url_list]
+        done, pending = await asyncio.wait(tasks)
+
+asyncio.run(main())
+</code></pre>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="category-chain-item">编程语言</a>
+  
+  
+    <span>></span>
+    
+  <a href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/" class="category-chain-item">Python</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="tags/Python/" class="print-no-link">#Python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>协程入门</div>
+      <div>http://pengunix.github.io/2826090076.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Pengunix</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 15, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="3789796875.html" title="记香橙派的第一次启动">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">记香橙派的第一次启动</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="3748403716.html" title="行列式的一道例题">
+                        <span class="hidden-mobile">行列式的一道例题</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Blog by Pengunix</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
