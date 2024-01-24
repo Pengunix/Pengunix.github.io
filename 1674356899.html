@@ -16,12 +16,12 @@
   <meta name="author" content="Pengunix">
   <meta name="keywords" content="">
   
-    <meta name="description" content="正则表达式1.基础字符组: 由“[]”包裹 [Pp]ython Python python P[python] # 区间 [a-zA-Z][0-9] # 特殊字符 [\-] ：\ 加上特殊字符 # 非集 [^a-z] ：匹配非小写字母的其他任何元素">
+    <meta name="description" content="正则表达式1.基础字符组: 由“[]”包裹 12345678[Pp]ythonPython python P[python]# 区间[a-zA-Z][0-9]# 特殊字符[\-] ：\ 加上特殊字符# 非集[^a-z] ：匹配非小写字母的其他任何元素">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式">
 <meta property="og:url" content="http://pengunix.github.io/1674356899.html">
 <meta property="og:site_name" content="Pengunix的博客">
-<meta property="og:description" content="正则表达式1.基础字符组: 由“[]”包裹 [Pp]ython Python python P[python] # 区间 [a-zA-Z][0-9] # 特殊字符 [\-] ：\ 加上特殊字符 # 非集 [^a-z] ：匹配非小写字母的其他任何元素">
+<meta property="og:description" content="正则表达式1.基础字符组: 由“[]”包裹 12345678[Pp]ythonPython python P[python]# 区间[a-zA-Z][0-9]# 特殊字符[\-] ：\ 加上特殊字符# 非集[^a-z] ：匹配非小写字母的其他任何元素">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://pengunix.github.io/1674356899/image-20220410122943243.png">
 <meta property="og:image" content="http://pengunix.github.io/1674356899/image-20220410123314606.png">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          623 words
+          633 words
         
       </span>
     
@@ -283,107 +283,56 @@
               <div class="markdown-body">
                 
                 <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="1-基础"><a href="#1-基础" class="headerlink" title="1.基础"></a>1.基础</h3><p>字符组: 由“[]”包裹</p>
-<pre><code>[Pp]ython
-Python python P[python]
-# 区间
-[a-zA-Z][0-9]
-# 特殊字符
-[\-] ：\ 加上特殊字符
-# 非集
-[^a-z] ：匹配非小写字母的其他任何元素
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-attr">[Pp]</span>ython<br>Python python <span class="hljs-selector-tag">P</span><span class="hljs-selector-attr">[python]</span><br># 区间<br><span class="hljs-selector-attr">[a-zA-Z]</span><span class="hljs-selector-attr">[0-9]</span><br># 特殊字符<br><span class="hljs-selector-attr">[\-]</span> ：\ 加上特殊字符<br># 非集<br><span class="hljs-selector-attr">[^a-z]</span> ：匹配非小写字母的其他任何元素<br></code></pre></td></tr></table></figure>
+
 <span id="more"></span>
 
 <p>快捷方式</p>
-<pre><code>\s:空白， 换行
-\b   word\b:单词边界
-\d:数字
-\w：字母 \W:匹配特殊字符
-非集：\S \B对应字母大写即可
-</code></pre>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-string">\s:空白，</span> 换行<br><span class="hljs-string">\b</span>   word<span class="hljs-string">\b:单词边界</span><br><span class="hljs-string">\d:数字</span><br><span class="hljs-string">\w：字母</span> <span class="hljs-string">\W:匹配特殊字符</span><br>非集：<span class="hljs-string">\S</span> <span class="hljs-string">\B对应字母大写即可</span><br></code></pre></td></tr></table></figure>
+
 <p>字符的开始与结束</p>
-<pre><code>^:单词开始
-实例：
-python 123456 python
-^python :  *python* 123456 python
-$:以n结尾
-python$ :  python 123456 *python*
-</code></pre>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mel">^:单词开始<br>实例：<br><span class="hljs-keyword">python</span> <span class="hljs-number">123456</span> <span class="hljs-keyword">python</span><br>^<span class="hljs-keyword">python</span> :  *<span class="hljs-keyword">python</span>* <span class="hljs-number">123456</span> <span class="hljs-keyword">python</span><br>$:以n结尾<br><span class="hljs-keyword">python</span>$ :  <span class="hljs-keyword">python</span> <span class="hljs-number">123456</span> *<span class="hljs-keyword">python</span>*<br></code></pre></td></tr></table></figure>
+
 <p>任意字符</p>
-<pre><code>. :匹配任意字符,不能匹配换行符
-</code></pre>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">. </span>:匹配任意字符,不能匹配换行符<br></code></pre></td></tr></table></figure>
+
 <p>可选字符</p>
-<pre><code>? :字符出现零次或一次 非贪婪模式
-honur honr
-honu?r : *honur* *honr*
-</code></pre>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">? :字符出现零次或一次 非贪婪模式<br>honur honr<br>honu?r : <span class="hljs-strong">*honur*</span> <span class="hljs-strong">*honr*</span><br></code></pre></td></tr></table></figure>
+
 <p>范围、重复区间</p>
-<pre><code>\d&#123;9&#125;
-\d&#123;1,9&#125; : 贪婪模式 有9个匹配9个
-\d&#123;8,9&#125;? : 匹配8个数字不匹配9个，非贪婪模式
-\d&#123;3,&#125; :匹配三个以上数字
-</code></pre>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">\d</span><span class="hljs-template-variable">&#123;9&#125;</span><span class="language-xml"></span><br><span class="language-xml">\d</span><span class="hljs-template-variable">&#123;1,9&#125;</span><span class="language-xml"> : 贪婪模式 有9个匹配9个</span><br><span class="language-xml">\d</span><span class="hljs-template-variable">&#123;8,9&#125;</span><span class="language-xml">? : 匹配8个数字不匹配9个，非贪婪模式</span><br><span class="language-xml">\d</span><span class="hljs-template-variable">&#123;3,&#125;</span><span class="language-xml"> :匹配三个以上数字</span><br></code></pre></td></tr></table></figure>
+
 <p>速写</p>
-<pre><code>+ : 匹配1个到无数个 等价于 &#123;1,&#125;
-* : ·匹配0个到无数个 等价于 &#123;0,&#125;
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs css">+ : 匹配<span class="hljs-number">1</span>个到无数个 等价于 &#123;<span class="hljs-number">1</span>,&#125;<br>* : ·匹配<span class="hljs-number">0</span>个到无数个 等价于 &#123;<span class="hljs-number">0</span>,&#125;<br><br><span class="hljs-selector-tag">a</span><br>a1<br>a123<br><span class="hljs-number">123456</span><br><br><span class="hljs-selector-tag">a</span>\d+ :<br><br>a<br>*a1*<br>*a123*<br><span class="hljs-number">123456</span><br></code></pre></td></tr></table></figure>
 
-a
-a1
-a123
-123456
+<h3 id="2-分组、回溯、断言（环视）"><a href="#2-分组、回溯、断言（环视）" class="headerlink" title="2.分组、回溯、断言（环视）"></a>2.分组、回溯、断言（环视）</h3><h4 id="分组：-使用”-”"><a href="#分组：-使用”-”" class="headerlink" title="分组： 使用”()”"></a>分组： 使用”()”</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-number">0731</span><span class="hljs-number">-8825951</span><br><span class="hljs-string">(\d&#123;4&#125;)-(\d&#123;7&#125;)</span><br><span class="hljs-attr">Group 1:</span> <span class="hljs-number">0731</span><br><span class="hljs-attr">Group 2:</span> <span class="hljs-number">8825951</span><br><br><span class="hljs-number">2019</span><span class="hljs-number">-5013</span><span class="hljs-number">-08</span><br><span class="hljs-number">2019 </span><span class="hljs-number">5013 </span><span class="hljs-number">08</span><br><span class="hljs-number">2019501308</span><br><br><span class="hljs-string">(\d&#123;4&#125;)[\-\s]?(\d&#123;4&#125;)[\-\s]?(\d&#123;2&#125;)</span><br><br><span class="hljs-number">2019 </span><span class="hljs-number">5013 </span><span class="hljs-number">08</span><br></code></pre></td></tr></table></figure>
 
-a\d+ :
+<h4 id="或者条件"><a href="#或者条件" class="headerlink" title="或者条件"></a>或者条件</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs coq">使用管道符号 |<br><span class="hljs-type">(.jpg</span>|<span class="hljs-type">.gif</span>|<span class="hljs-type">.jpeg</span>|<span class="hljs-type">.png</span>)<br>匹配对应图片后缀<br></code></pre></td></tr></table></figure>
 
-a
-*a1*
-*a123*
-123456
-</code></pre>
-<h3 id="2-分组、回溯、断言（环视）"><a href="#2-分组、回溯、断言（环视）" class="headerlink" title="2.分组、回溯、断言（环视）"></a>2.分组、回溯、断言（环视）</h3><h4 id="分组：-使用”-”"><a href="#分组：-使用”-”" class="headerlink" title="分组： 使用”()”"></a>分组： 使用”()”</h4><pre><code>0731-8825951
-(\d&#123;4&#125;)-(\d&#123;7&#125;)
-Group 1: 0731
-Group 2: 8825951
-
-2019-5013-08
-2019 5013 08
-2019501308
-
-(\d&#123;4&#125;)[\-\s]?(\d&#123;4&#125;)[\-\s]?(\d&#123;2&#125;)
-
-2019 5013 08
-</code></pre>
-<h4 id="或者条件"><a href="#或者条件" class="headerlink" title="或者条件"></a>或者条件</h4><pre><code>使用管道符号 |
-(.jpg|.gif|.jpeg|.png)
-匹配对应图片后缀
-</code></pre>
 <h4 id="非捕获分组："><a href="#非捕获分组：" class="headerlink" title="非捕获分组："></a>非捕获分组：</h4><p>当我们不需要获取某个分组的内容，但是又想使用分组的特性，此时就可以使用非捕获组(?:表达式)，从而不不捕获数据，还能使用分组的功能</p>
 <img src="1674356899/image-20220410122943243.png" srcset="/img/loading.gif" lazyload class="" title="image-20220410122943243">
 
 <h4 id="分组的回溯引用"><a href="#分组的回溯引用" class="headerlink" title="分组的回溯引用"></a>分组的回溯引用</h4><img src="1674356899/image-20220410123314606.png" srcset="/img/loading.gif" lazyload class="" title="image-20220410123314606">
 
-<pre><code>&lt;(\w+)&gt;(.*?)&lt;/\1&gt;
-匹配html标签内容 (\w+)第一个分组 \1代表回溯第一个分组
-</code></pre>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gcode">&lt;<span class="hljs-comment">(\w+)</span>&gt;<span class="hljs-comment">(.*?)</span>&lt;/\<span class="hljs-number">1</span>&gt;<br>匹配html标签内容 <span class="hljs-comment">(\w+)</span>第一个分组 \<span class="hljs-number">1</span>代表回溯第一个分组<br></code></pre></td></tr></table></figure>
+
 <img src="1674356899/image-20220410123531987.png" srcset="/img/loading.gif" lazyload class="" title="image-20220410123531987">
 
-<h4 id="正向先行断言"><a href="#正向先行断言" class="headerlink" title="正向先行断言"></a>正向先行断言</h4><pre><code>喜欢(?=你)
-匹配喜欢右边有你的字符，不会匹配‘你’
-</code></pre>
+<h4 id="正向先行断言"><a href="#正向先行断言" class="headerlink" title="正向先行断言"></a>正向先行断言</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ruby">喜欢(<span class="hljs-string">?=</span>你)<br>匹配喜欢右边有你的字符，不会匹配‘你’<br></code></pre></td></tr></table></figure>
+
 <p>密码强度验证 必须包含 大小写字母 至少一个数字 至少 8 个字符</p>
 <img src="1674356899/image-20220410123940795.png" srcset="/img/loading.gif" lazyload class="" title="image-20220410123940795">
 
 <h4 id="反向先行断言"><a href="#反向先行断言" class="headerlink" title="反向先行断言"></a>反向先行断言</h4><p>反向先行断言（?!表达式）作用是保证右边不能出现某个字符</p>
-<pre><code>喜欢(?!你)
-匹配右边不是你的喜欢二字包含右边什么都没有的情况
-</code></pre>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ruby">喜欢(<span class="hljs-string">?!</span>你)<br>匹配右边不是你的喜欢二字包含右边什么都没有的情况<br></code></pre></td></tr></table></figure>
+
 <h4 id="正向后行断言"><a href="#正向后行断言" class="headerlink" title="正向后行断言"></a>正向后行断言</h4><p>(?&lt;&#x3D;表达式)，指在某个位置向左看，表示所在位置左侧必须能匹配</p>
 <p>例如：如果要取出喜欢两个字，要求喜欢的前面有我，后面有你，此时</p>
-<pre><code>(?&lt;=我)喜欢(?=你)
-</code></pre>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">(<span class="hljs-string">?&lt;</span>=我)喜欢(<span class="hljs-string">?=</span>你)<br></code></pre></td></tr></table></figure>
+
 <h4 id="反向后行断言"><a href="#反向后行断言" class="headerlink" title="反向后行断言"></a>反向后行断言</h4><p>(?&lt;!表达式)</p>
 <p>例如：取出喜欢两个字，要求喜欢的前面没有我，后面没有你</p>
-<pre><code>(?&lt;!我)喜欢(?!n)
-</code></pre>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">(<span class="hljs-string">?&lt;</span>!我)喜欢(<span class="hljs-string">?!</span>n)<br></code></pre></td></tr></table></figure>
 
                 
               </div>

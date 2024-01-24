@@ -285,24 +285,18 @@
 
 <h2 id="2-系统优化"><a href="#2-系统优化" class="headerlink" title="2. 系统优化"></a>2. 系统优化</h2><h3 id="2-1-镜像源"><a href="#2-1-镜像源" class="headerlink" title="2.1 镜像源"></a>2.1 镜像源</h3><img src="3789796875/1.png" srcset="/img/loading.gif" lazyload class="">
 <p>以上是我挂代理情况下，且本地数据库是最新的，但仍然出现 404 报错，考虑添加 archlinuxarm 源来补全缺失的软件。<br>更改&#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist</p>
-<pre><code># 只保留
-Server = https://mirrors.bfsu.edu.cn/archlinuxarm/$arch/$repo
-# 复制
-# Server = http://nl.mirror.orangeinfra.online/unstable/$arch/$repo
-</code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 只保留</span><br>Server = https:<span class="hljs-regexp">//mi</span>rrors.bfsu.edu.cn<span class="hljs-regexp">/archlinuxarm/</span><span class="hljs-variable">$arch</span>/<span class="hljs-variable">$repo</span><br><span class="hljs-comment"># 复制</span><br><span class="hljs-comment"># Server = http://nl.mirror.orangeinfra.online/unstable/$arch/$repo</span><br></code></pre></td></tr></table></figure>
+
 <p>更改&#x2F;etc&#x2F;pacman.conf</p>
-<pre><code>[opios]
-#Include = /etc/pacman.d/mirrorlist
-Server = http://nl.mirror.orangeinfra.online/unstable/$arch/$repo
-</code></pre>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[opios]</span><br><span class="hljs-comment">#Include = /etc/pacman.d/mirrorlist</span><br><span class="hljs-attr">Server</span> = http://nl.mirror.orangeinfra.<span class="hljs-literal">on</span>line/unstable/<span class="hljs-variable">$arch</span>/<span class="hljs-variable">$repo</span><br></code></pre></td></tr></table></figure>
+
 <p>然后执行</p>
-<pre><code class="bash">sudo pacman -Syy
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo pacman -Syy<br></code></pre></td></tr></table></figure>
+
 <p>这样，软件就可以正常下载了。</p>
 <img src="3789796875/2.png" srcset="/img/loading.gif" lazyload class="">
 
-<h3 id="卸载桌面环境（如果需要）"><a href="#卸载桌面环境（如果需要）" class="headerlink" title="卸载桌面环境（如果需要）"></a>卸载桌面环境（如果需要）</h3><pre><code>sudo pacman -Rsc xfce4 xorg
-</code></pre>
+<h3 id="卸载桌面环境（如果需要）"><a href="#卸载桌面环境（如果需要）" class="headerlink" title="卸载桌面环境（如果需要）"></a>卸载桌面环境（如果需要）</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">sudo</span> pacman -<span class="hljs-keyword">Rsc</span> xfce4 xorg<br></code></pre></td></tr></table></figure>
 
                 
               </div>
