@@ -1,94 +1,355 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Pengunix</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Pengunix&#039;s Blog"><meta name="msapplication-TileImage" content="/images/fav.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Pengunix&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Pengunix"><meta property="og:url" content="https://blog.pengunix.icu/"><meta property="og:site_name" content="Pengunix"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://blog.pengunix.icu/img/og_image.png"><meta property="article:author" content="Pengunix"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://blog.pengunix.icu/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.pengunix.icu"},"headline":"Pengunix","image":["https://blog.pengunix.icu/img/og_image.png"],"author":{"@type":"Person","name":"Pengunix"},"publisher":{"@type":"Organization","name":"Pengunix","logo":{"@type":"ImageObject","url":"https://blog.pengunix.icu/images/logo.png"}},"description":""}</script><link rel="icon" href="/images/fav.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Pengunix</title><meta name="author" content="Pengunix"><meta name="copyright" content="Pengunix"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Pengunix blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pengunix">
+<meta property="og:url" content="https://blog.pengunix.icu/index.html">
+<meta property="og:site_name" content="Pengunix">
+<meta property="og:description" content="Pengunix blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.pengunix.icu/images/avatar.png">
+<meta property="article:author" content="Pengunix">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.pengunix.icu/images/avatar.png"><link rel="shortcut icon" href="/img/fav.png"><link rel="canonical" href="https://blog.pengunix.icu/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Pengunix',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-08-05 19:11:01'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
           }
-
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
-
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
-
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="index.html"><img src="/images/logo.png" alt="Pengunix" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="index.html">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-08-04T11:35:07.304Z" title="2024/8/4 07:35:07">2024-08-04</time>发表</span><span class="level-item"><time dateTime="2023-10-29T04:32:32.000Z" title="2023/10/29 00:32:32">2023-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span> / </span><a class="link-muted" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></span><span class="level-item">4 分钟读完 (大约640个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2024/08/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></p><div class="content"><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="1-基础"><a href="#1-基础" class="headerlink" title="1.基础"></a>1.基础</h3><p>字符组: 由“[]”包裹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Pp]ython</span><br><span class="line">Python python P[python]</span><br><span class="line"># 区间</span><br><span class="line">[a-zA-Z][0-9]</span><br><span class="line"># 特殊字符</span><br><span class="line">[\-] ：\ 加上特殊字符</span><br><span class="line"># 非集</span><br><span class="line">[^a-z] ：匹配非小写字母的其他任何元素</span><br></pre></td></tr></table></figure></div><a class="article-more button is-small is-size-7" href="2024/08/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-01-30T16:00:00.000Z" title="2024/1/30 11:00:00">2024-01-31</time>发表</span><span class="level-item"><time dateTime="2024-08-04T11:41:28.849Z" title="2024/8/4 07:41:28">2024-08-04</time>更新</span><span class="level-item"><a class="link-muted" href="categories/C/">C++</a></span><span class="level-item">14 分钟读完 (大约2148个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2024/01/30/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%9B%BE%E8%AE%BA/">算法基础图论</a></p><div class="content"><h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>可以合并，可以查询联通关系的集合。<br>初始化</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pre[i] = i;</span><br></pre></td></tr></table></figure></div><a class="article-more button is-small is-size-7" href="2024/01/30/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%9B%BE%E8%AE%BA/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-01-23T16:00:00.000Z" title="2024/1/23 11:00:00">2024-01-24</time>发表</span><span class="level-item"><time dateTime="2024-08-04T11:42:05.380Z" title="2024/8/4 07:42:05">2024-08-04</time>更新</span><span class="level-item"><a class="link-muted" href="categories/C/">C++</a></span><span class="level-item">7 分钟读完 (大约1066个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2024/01/23/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/">算法基础数论</a></p><div class="content"><h2 id="因数和质因数分解"><a href="#因数和质因数分解" class="headerlink" title="因数和质因数分解"></a>因数和质因数分解</h2><h3 id="质数判断"><a href="#质数判断" class="headerlink" title="质数判断"></a>质数判断</h3><p>复杂度：$O(\sqrt{n})$</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> ll inf = <span class="number">4e18</span>, p = <span class="number">998244353</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isprime</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (x&lt;<span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i * i &lt; x; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (x%i==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> n;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  cout &lt;&lt; <span class="built_in">isprime</span>(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><a class="article-more button is-small is-size-7" href="2024/01/23/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-10-29T06:13:41.000Z" title="2023/10/29 02:13:41">2023-10-29</time>发表</span><span class="level-item"><time dateTime="2024-08-04T11:41:53.546Z" title="2024/8/4 07:41:53">2024-08-04</time>更新</span><span class="level-item"><a class="link-muted" href="categories/Python/">Python</a></span><span class="level-item">6 分钟读完 (大约963个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2023/10/29/OPENCV-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-1/">OPENCV-图像处理-1</a></p><div class="content"><h2 id="图片基本操作"><a href="#图片基本操作" class="headerlink" title="图片基本操作"></a>图片基本操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">%matplotlib inline <span class="comment"># 直接展示图片 无需 .show</span></span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&quot;a.png&quot;</span>) <span class="comment"># 默认BGR模式</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># def show(img):</span></span><br><span class="line"><span class="comment"># 显示图片</span></span><br><span class="line">cv2.imshow(<span class="string">&quot;窗口标题&quot;</span>, img)</span><br><span class="line"><span class="comment"># 等待时间 0 为一直等 按任意键关闭</span></span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></div><a class="article-more button is-small is-size-7" href="2023/10/29/OPENCV-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-1/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-07-18T02:46:34.000Z" title="2023/7/17 22:46:34">2023-07-18</time>发表</span><span class="level-item"><time dateTime="2023-10-29T04:32:32.000Z" title="2023/10/29 00:32:32">2023-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/">开发板</a><span> / </span><a class="link-muted" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/">香橙派</a></span><span class="level-item">2 分钟读完 (大约232个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2023/07/17/%E9%A6%99%E6%A9%99%E6%B4%BEzero3%E7%82%B9%E4%BA%AEi2c-oled%E5%B1%8F%E5%B9%95/">香橙派zero3 I2C oled连接测试</a></p><div class="content"><p>板子：香橙派zero3 2gb<br>镜像：orange os (arch linux)<br>先贴张引脚图</p></div><a class="article-more button is-small is-size-7" href="2023/07/17/%E9%A6%99%E6%A9%99%E6%B4%BEzero3%E7%82%B9%E4%BA%AEi2c-oled%E5%B1%8F%E5%B9%95/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-07-17T11:02:50.000Z" title="2023/7/17 07:02:50">2023-07-17</time>发表</span><span class="level-item"><time dateTime="2023-10-29T04:32:32.000Z" title="2023/10/29 00:32:32">2023-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/">开发板</a><span> / </span><a class="link-muted" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/">香橙派</a></span><span class="level-item">2 分钟读完 (大约271个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2023/07/17/%E8%AE%B0%E9%A6%99%E6%A9%99%E6%B4%BE%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%90%AF%E5%8A%A8/">记香橙派的第一次启动</a></p><div class="content"><h2 id="1-登录"><a href="#1-登录" class="headerlink" title="1. 登录"></a>1. 登录</h2><p>官方的 archlinux 系统默认带 xfce 桌面环境，由于 micro hdmi 线还没到，只能用 tty 交互。<br>或许是需要图形化初始化默认账户和密码，官方提供的不能在 tty 登录。(待求证)<br>注：<strong>官方手册里的默认账户密码不正确！！！！</strong><br>解决办法：用另一个开发板 chroot，更改 root 密码。</p></div><a class="article-more button is-small is-size-7" href="2023/07/17/%E8%AE%B0%E9%A6%99%E6%A9%99%E6%B4%BE%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%90%AF%E5%8A%A8/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-07-15T11:37:06.000Z" title="2023/7/15 07:37:06">2023-07-15</time>发表</span><span class="level-item"><time dateTime="2024-02-07T13:41:57.000Z" title="2024/2/7 08:41:57">2024-02-07</time>更新</span><span class="level-item"><a class="link-muted" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span> / </span><a class="link-muted" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></span><span class="level-item">15 分钟读完 (大约2230个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2023/07/15/%E5%8D%8F%E7%A8%8B%E5%85%A5%E9%97%A8/">协程入门</a></p><div class="content"><h2 id="python-异步"><a href="#python-异步" class="headerlink" title="python 异步"></a>python 异步</h2><h3 id="1-1-事件循环"><a href="#1-1-事件循环" class="headerlink" title="1.1 事件循环"></a>1.1 事件循环</h3><p>理解为一个死循环，检测并执行某些代码。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="comment"># 生成或获取一个事件循环</span></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line"><span class="comment"># 将任务放入任务列表</span></span><br><span class="line">loop.run_until_complete(任务)</span><br></pre></td></tr></table></figure></div><a class="article-more button is-small is-size-7" href="2023/07/15/%E5%8D%8F%E7%A8%8B%E5%85%A5%E9%97%A8/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-07-13T09:26:05.000Z" title="2023/7/13 05:26:05">2023-07-13</time>发表</span><span class="level-item"><time dateTime="2023-10-29T04:32:32.000Z" title="2023/10/29 00:32:32">2023-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="categories/%E9%AB%98%E6%95%B0/">高数</a><span> / </span><a class="link-muted" href="categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></span><span class="level-item">2 分钟读完 (大约296个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2023/07/13/%E8%A1%8C%E5%88%97%E5%BC%8F%E5%AE%9A%E4%B9%89%E7%9A%84%E4%B8%80%E9%81%93%E4%BE%8B%E9%A2%98/">行列式的一道例题</a></p><div class="content"><p>题目来自教材习题 2.2 第五题<br>下述行列式是 x 的几次多项式?分别求出$x^4$和$x^3$的系数</p>
-<p>$$<br>\begin{vmatrix}<br>5x &amp; x &amp; 1 &amp; x \\<br>1 &amp; x &amp; 1 &amp; -x \\<br>3 &amp; 2 &amp; x &amp; 1 \\<br>3 &amp; 1 &amp; 1 &amp; x<br>\end{vmatrix}<br>$$</p></div><a class="article-more button is-small is-size-7" href="2023/07/13/%E8%A1%8C%E5%88%97%E5%BC%8F%E5%AE%9A%E4%B9%89%E7%9A%84%E4%B8%80%E9%81%93%E4%BE%8B%E9%A2%98/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-07-12T02:00:45.000Z" title="2023/7/11 22:00:45">2023-07-12</time>发表</span><span class="level-item"><time dateTime="2023-10-29T04:32:32.000Z" title="2023/10/29 00:32:32">2023-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="categories/%E9%AB%98%E6%95%B0/">高数</a><span> / </span><a class="link-muted" href="categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></span><span class="level-item">10 分钟读完 (大约1488个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2023/07/11/%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E6%80%A7%E8%B4%A8/">第四节 行列式的性质</a></p><div class="content"><h3 id="性质-1"><a href="#性质-1" class="headerlink" title="性质 1"></a>性质 1</h3><p>一个矩阵的行列式按行和列排序结果是相同的，如果交换一个矩阵的行和列，其行列式是否会发生改变呢？</p></div><a class="article-more button is-small is-size-7" href="2023/07/11/%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E6%80%A7%E8%B4%A8/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-07-07T04:11:13.000Z" title="2023/7/7 00:11:13">2023-07-07</time>发表</span><span class="level-item"><time dateTime="2023-10-29T04:32:32.000Z" title="2023/10/29 00:32:32">2023-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="categories/%E9%AB%98%E6%95%B0/">高数</a><span> / </span><a class="link-muted" href="categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></span><span class="level-item">11 分钟读完 (大约1639个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/">第三节 行列式</a></p><div class="content"><p>数域 K 上已知一个二元一次方程组：</p>
-<p>$$<br>\begin{cases}<br>a_{11}x_1+a_{12}x_2&#x3D;b_1 \\<br>a_{21}x_1+a_{22}x_2&#x3D;b_2<br>\end{cases}<br>$$</p>
-<p>其系数矩阵</p>
-<p>$$<br>A:\begin{pmatrix}<br>a_{11}&amp;a_{12} \\<br>a_{21}&amp;a_{22}<br>\end{pmatrix}<br>$$</p></div><a class="article-more button is-small is-size-7" href="2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/#more">阅读更多</a></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="page/0/">上一页</a></div><div class="pagination-next"><a href="page/2/">下一页</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="">1</a></li><li><a class="pagination-link" href="page/2/">2</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/images/avatar.png" alt="Pengunix"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Pengunix</p><p class="is-size-6 is-block">Do u ever get a little bit tired of life?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">13</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/pengunix" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/pengunix"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Bilibili" href="https://space.bilibili.com/357944209"><i class="fab fa-bilibili"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="categories/C/"><span class="level-start"><span class="level-item">C++</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/"><span class="level-start"><span class="level-item">开发板</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/"><span class="level-start"><span class="level-item">香橙派</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"><span class="level-start"><span class="level-item">编程语言</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="categories/%E9%AB%98%E6%95%B0/"><span class="level-start"><span class="level-item">高数</span></span><span class="level-end"><span class="level-item tag">6</span></span></a><ul><li><a class="level is-mobile" href="categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><span class="level-start"><span class="level-item">线性代数</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-08-04T11:35:07.304Z">2024-08-04</time></p><p class="title"><a href="2024/08/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></p><p class="categories"><a href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a> / <a href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-30T16:00:00.000Z">2024-01-31</time></p><p class="title"><a href="2024/01/30/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%9B%BE%E8%AE%BA/">算法基础图论</a></p><p class="categories"><a href="categories/C/">C++</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-23T16:00:00.000Z">2024-01-24</time></p><p class="title"><a href="2024/01/23/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/">算法基础数论</a></p><p class="categories"><a href="categories/C/">C++</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-10-29T06:13:41.000Z">2023-10-29</time></p><p class="title"><a href="2023/10/29/OPENCV-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-1/">OPENCV-图像处理-1</a></p><p class="categories"><a href="categories/Python/">Python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-07-18T02:46:34.000Z">2023-07-18</time></p><p class="title"><a href="2023/07/17/%E9%A6%99%E6%A9%99%E6%B4%BEzero3%E7%82%B9%E4%BA%AEi2c-oled%E5%B1%8F%E5%B9%95/">香橙派zero3 I2C oled连接测试</a></p><p class="categories"><a href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/">开发板</a> / <a href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/">香橙派</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="archives/2024/08/"><span class="level-start"><span class="level-item">八月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="archives/2023/10/"><span class="level-start"><span class="level-item">十月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="archives/2023/06/"><span class="level-start"><span class="level-item">六月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="tags/Python/"><span class="tag">Python</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><span class="tag">线性代数</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="tags/%E9%A6%99%E6%A9%99%E6%B4%BE/"><span class="tag">香橙派</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="index.html"><img src="/images/logo.png" alt="Pengunix" height="28"></a><p class="is-size-7"><span>&copy; 2024 Pengunix</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2024</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
-      window.cookieconsent.initialise({
-        type: "info",
-        theme: "edgeless",
-        static: false,
-        position: "bottom-left",
-        content: {
-          message: "此网站使用Cookie来改善您的体验。",
-          dismiss: "知道了！",
-          allow: "允许使用Cookie",
-          deny: "拒绝",
-          link: "了解更多",
-          policy: "Cookie政策",
-          href: "https://www.cookiesandyou.com/",
+          localStorage.setItem(key, JSON.stringify(item))
         },
-        palette: {
-          popup: {
-            background: "#edeff5",
-            text: "#838391"
-          },
-          button: {
-            background: "#4b81e8"
-          },
-        },
-      });
-    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      },
-      svg: {
-        fontCache: 'global'
-      },
-      chtml: {
-        matchFontHeight: false
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
       }
-    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
-        });</script></body></html>
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../images/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/images/bg.jpg')"><nav id="nav"><span id="blog-info"><a href="../index.html" title="Pengunix"><img class="site-icon" src="../images/logo.png#%20image"/></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Pengunix</h1><div id="site_social_icons"><a class="social-icon" href="https://github.com/pengunix" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/357944209" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2024/08/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式">正则表达式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-04T11:35:07.304Z" title="发表于 2024-08-04 19:35:07">2024-08-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></span></div><div class="content">正则表达式1.基础字符组: 由“[]”包裹
+12345678[Pp]ythonPython python P[python]# 区间[a-zA-Z][0-9]# 特殊字符[\-] ：\ 加上特殊字符# 非集[^a-z] ：匹配非小写字母的其他任何元素
+
+快捷方式
+12345\s:空白， 换行\b   word\b:单词边界\d:数字\w：字母 \W:匹配特殊字符非集：\S \B对应字母大写即可
+字符的开始与结束
+123456^:单词开始实例：python 123456 python^python :  *python* 123456 python$:以n结尾python$ :  python 123456 *python*
+任意字符
+1. :匹配任意字符,不能匹配换行符
+可选字符
+123? :字符出现零次或一次 非贪婪模式honur honrhonu?r : *honur* *honr*
+范围、重复区间
+1234\d&#123;9&#125;\d&#123;1,9&#125; : 贪婪模式 有9个匹配9个\d&#123;8,9&#125;? : 匹配8个数字不匹配9个，非贪婪模式\d& ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2024/01/30/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%9B%BE%E8%AE%BA/" title="算法基础图论">算法基础图论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-30T16:00:00.000Z" title="发表于 2024-01-31 00:00:00">2024-01-31</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/C/">C++</a></span></div><div class="content">并查集可以合并，可以查询联通关系的集合。初始化1pre[i] = i;找根1234int root(int x) {	if (pre[x] == x) return x;	return root(pre[x]);}合并123void merge(int u, int v) {	pre[root(u)] = root(v);}查询u,v是否联通123void query(int u, int v) {	root(u) == root(v);}路径压缩：经过找根操作后，直接将每个点的出点指向根。123void root(u) {	pre[u] = pre[u]==u ? u : root(pre[u]);}换根操作：多出一个节点或一个连通块，可以将这个节点或连通块的根指向原来的连通块根，也可将原来的根指向新增的节点或连通块，前者称为按秩合并(小-&gt;大)。
+123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;algorithm&gt;#include  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2024/01/23/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/" title="算法基础数论">算法基础数论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-23T16:00:00.000Z" title="发表于 2024-01-24 00:00:00">2024-01-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/C/">C++</a></span></div><div class="content">因数和质因数分解质数判断复杂度：12345678910111213141516171819#include &lt;iostream&gt;using namespace std;using ll = long long;const int N = 2e5 + 10;const ll inf = 4e18, p = 998244353;bool isprime(int x) {  if (x&lt;2) return false;  for (int i = 2; i * i &lt; x; ++i) {    if (x%i==0) return false;  }  return true;}int main() {  int n;  cin &gt;&gt; n;  cout &lt;&lt; isprime(n);}
+分解因数1234567891011121314151617int main() {  ll n;  cin &gt;&gt; n;  vector&lt;ll&gt; v;  for (ll i=1;i*i&lt;=n;++i) {    if (n % i)   ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2023/10/29/OPENCV-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-1/" title="OPENCV-图像处理-1">OPENCV-图像处理-1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-29T06:13:41.000Z" title="发表于 2023-10-29 14:13:41">2023-10-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/Python/">Python</a></span></div><div class="content">图片基本操作12345678910111213import cv2import matplotlib.pyplot as pltimport numpy as np%matplotlib inline # 直接展示图片 无需 .showimg = cv2.imread(&quot;a.png&quot;) # 默认BGR模式# def show(img):# 显示图片cv2.imshow(&quot;窗口标题&quot;, img)# 等待时间 0 为一直等 按任意键关闭cv2.waitKey(0)cv2.destroyAllWindows()
+
+imread以某种模式加载图片
+12img = cv2.imread(&quot;/path/to/img&quot;, cv2.IMREAD_***)  # IMREAD_GRAYSCALE等模式img.shape # 只有两个维度
+imwrite写入图片
+1cv2.imwrite(&quot;/path/to/img&quot;, img)
+视频读取
+cv2.VideoCapture可以捕获摄像头，用数字来控制不同设备
+如果是视频文件，直 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2023/07/17/%E9%A6%99%E6%A9%99%E6%B4%BEzero3%E7%82%B9%E4%BA%AEi2c-oled%E5%B1%8F%E5%B9%95/" title="香橙派zero3 I2C oled连接测试">香橙派zero3 I2C oled连接测试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-18T02:46:34.000Z" title="发表于 2023-07-18 10:46:34">2023-07-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/">开发板</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/">香橙派</a></span></div><div class="content">板子：香橙派zero3 2gb镜像：orange os (arch linux)先贴张引脚图可见，可以扩展的是I2C-3这个镜像系统默认不开启i2c-3，也没有官方的配置工具orangepi-config，所以需要我们手动开启i2c-3。打开/boot/extlinux/extlinux.conf，在FDT下面一行添加FDTOVERLAYS1FDTOVERLAYS /dtbs/allwinner/overlay/sun50i-h616-ph-i2c3.dtbo重启系统，查看/dev/i2c-*12$ls /dev/i2c-*/dev/i2c-3  /dev/i2c-4  /dev/i2c-5i2c-3已经启用，接着进行测试安装i2c-tools12sudo pacman -S i2c-toolssudo i2cdetect -y 3下载wiringOP获取示例代码12345git clone https://github.com/orangepi-xunlong/wiringOPmkdir test &amp;&amp; cd testcp ../wiringOP/examples/o ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2023/07/17/%E8%AE%B0%E9%A6%99%E6%A9%99%E6%B4%BE%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%90%AF%E5%8A%A8/" title="记香橙派的第一次启动">记香橙派的第一次启动</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-17T11:02:50.000Z" title="发表于 2023-07-17 19:02:50">2023-07-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/">开发板</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/">香橙派</a></span></div><div class="content">1. 登录官方的 archlinux 系统默认带 xfce 桌面环境，由于 micro hdmi 线还没到，只能用 tty 交互。或许是需要图形化初始化默认账户和密码，官方提供的不能在 tty 登录。(待求证)注：官方手册里的默认账户密码不正确！！！！解决办法：用另一个开发板 chroot，更改 root 密码。
+
+2. 系统优化2.1 镜像源以上是我挂代理情况下，且本地数据库是最新的，但仍然出现 404 报错，考虑添加 archlinuxarm 源来补全缺失的软件。更改/etc/pacman.d/mirrorlist
+1234# 只保留Server = https://mirrors.bfsu.edu.cn/archlinuxarm/$arch/$repo# 复制# Server = http://nl.mirror.orangeinfra.online/unstable/$arch/$repo
+更改/etc/pacman.conf
+123[opios]#Include = /etc/pacman.d/mirrorlistServer = http://nl.mirror.orang ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2023/07/15/%E5%8D%8F%E7%A8%8B%E5%85%A5%E9%97%A8/" title="协程入门">协程入门</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:06.000Z" title="发表于 2023-07-15 19:37:06">2023-07-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></span></div><div class="content">python 异步1.1 事件循环理解为一个死循环，检测并执行某些代码。
+12345import asyncio# 生成或获取一个事件循环loop = asyncio.get_event_loop()# 将任务放入任务列表loop.run_until_complete(任务)
+
+1.2 快速上手协程函数，定义函数使用 async def 关键字
+12async def func():    ...
+协程对象，执行协程函数得到的协程对象
+1result = func()  # 得到协程对象，不会执行函数
+如果想要运行协程函数内部代码，必须要将协程对象交给事件循环
+123456# 生成或获取一个事件循环loop = asyncio.get_event_loop()# 将任务放入任务列表loop.run_until_complete(result)# 或者asyncio.run(result) # python3.7+
+1.3 await 关键字await 可等待的对象(协程对象，Future 对象，task 对象 -&gt; io 等待)
+12345678import asyncioasy ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2023/07/13/%E8%A1%8C%E5%88%97%E5%BC%8F%E5%AE%9A%E4%B9%89%E7%9A%84%E4%B8%80%E9%81%93%E4%BE%8B%E9%A2%98/" title="行列式的一道例题">行列式的一道例题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-13T09:26:05.000Z" title="发表于 2023-07-13 17:26:05">2023-07-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E9%AB%98%E6%95%B0/">高数</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></span></div><div class="content">题目来自教材习题 2.2 第五题下述行列式是 x 的几次多项式?分别求出和的系数
+
+\begin{vmatrix}
+5x & x & 1 & x \\\\
+1 & x & 1 & -x \\\\
+3 & 2 & x & 1 \\\\
+3 & 1 & 1 & x
+\end{vmatrix}
+能取到的最高项也就是主对角线的乘积，所以是 4 次多项式。其中一个四次项的系数是主对角线，也就是 5，可以选中一个 x 去凑另一个四次项，显然凑不出来。选择一行的 x 分别凑一个三次项，如图按行指标排列如下
+
+a_{14}a_{22}a_{33}a_{41}列指标排列为 4231，其逆序数为 5，是奇排列，故系数为-3。再凑一个列指标排列为 2431，逆序数为 4，是偶排列，故系数为-3。列指标排列为 1432，逆序数为 3，是奇排列，故系数为 5 。列指标排列为 2134，逆序数为 1，是奇排列，故系数为-1。所以，三次项系数为-2。nnd 答案错了
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2023/07/11/%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E6%80%A7%E8%B4%A8/" title="第四节 行列式的性质">第四节 行列式的性质</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-12T02:00:45.000Z" title="发表于 2023-07-12 10:00:45">2023-07-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E9%AB%98%E6%95%B0/">高数</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></span></div><div class="content">性质 1一个矩阵的行列式按行和列排序结果是相同的，如果交换一个矩阵的行和列，其行列式是否会发生改变呢？
+
+答案是不变
+
+设n级矩阵：A=(a_{ij})=
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\\\
+a_{21} & a_{22} & \cdots & a_{2n} \\\\
+\cdots & \cdots & \cdots & \cdots \\\\
+a_{n1} &a_{n2} & \cdots &a_{nn}
+\end{pmatrix}把行列互换
+
+A^\top =
+\begin{pmatrix}
+a_{11} & a_{21} & \cdots & a_{n1} \\\\
+a_{12} & a_{22} & \cdots & a_{n2} \\\\
+\cdots & \cdots & \cdots & \cdots \\\\
+a_{1n} &a_{2n} & \cdots &a_{nn}
+\end{pmatrix}变换后的矩阵称为矩阵 A 的转置，记作或或。
+
+|A^\top| \xlongequal[]{列指标 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/" title="第三节 行列式">第三节 行列式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-07T04:11:13.000Z" title="发表于 2023-07-07 12:11:13">2023-07-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E9%AB%98%E6%95%B0/">高数</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></span></div><div class="content">数域 K 上已知一个二元一次方程组：
+
+\begin{cases}
+a_{11}x_1+a_{12}x_2=b_1 \\\\
+a_{21}x_1+a_{22}x_2=b_2
+\end{cases}其系数矩阵
+
+A:\begin{pmatrix}
+a_{11}&a_{12} \\\\
+a_{21}&a_{22}
+\end{pmatrix}
+表示方法（二阶行列式）：
+
+det(A)=|A|=a_{11}a_{22}-a_{12}a_{21}在数域 K 上方程组有唯一解的充分必要条件是。
+从二阶行列式来看，计算结果就是一个对角线的积减去另一个对角线（反对角线）的积。定义：是 2!项代数和，其中每一项是取自不同行、不同列的两个元素的乘积，每一项的行指标成自然序（从小到大）排好位置。当列指标按自然序排列时，该项带正号。反之，该项带负号。
+n 元排列1,2,…..,n 的一个全排列称为一个n 元排列。（或 n 个不同的正整数）1,2,….,n 形成的 n 元排列有 n!个。（或 n 个不同的正整数）例如三元排列有 123,132,213,231,312,321 共 6 个。四元排列 2431 从左 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="page/2/#content-inner">2</a><a class="extend next" rel="next" href="page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="../images/avatar.png" onerror="this.onerror=null;this.src='../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Pengunix</div><div class="author-info__description">Pengunix blog</div></div><div class="card-info-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/pengunix"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pengunix" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/357944209" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="../2024/08/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式">正则表达式</a><time datetime="2024-08-04T11:35:07.304Z" title="发表于 2024-08-04 19:35:07">2024-08-04</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="../2024/01/30/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%9B%BE%E8%AE%BA/" title="算法基础图论">算法基础图论</a><time datetime="2024-01-30T16:00:00.000Z" title="发表于 2024-01-31 00:00:00">2024-01-31</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="../2024/01/23/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/" title="算法基础数论">算法基础数论</a><time datetime="2024-01-23T16:00:00.000Z" title="发表于 2024-01-24 00:00:00">2024-01-24</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="../2023/10/29/OPENCV-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-1/" title="OPENCV-图像处理-1">OPENCV-图像处理-1</a><time datetime="2023-10-29T06:13:41.000Z" title="发表于 2023-10-29 14:13:41">2023-10-29</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="../2023/07/17/%E9%A6%99%E6%A9%99%E6%B4%BEzero3%E7%82%B9%E4%BA%AEi2c-oled%E5%B1%8F%E5%B9%95/" title="香橙派zero3 I2C oled连接测试">香橙派zero3 I2C oled连接测试</a><time datetime="2023-07-18T02:46:34.000Z" title="发表于 2023-07-18 10:46:34">2023-07-18</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="../categories/C/"><span class="card-category-list-name">C++</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="../categories/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/"><span class="card-category-list-name">开发板</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/"><span class="card-category-list-name">香橙派</span><span class="card-category-list-count">2</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"><span class="card-category-list-name">编程语言</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/"><span class="card-category-list-name">Python</span><span class="card-category-list-count">2</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="../categories/%E9%AB%98%E6%95%B0/"><span class="card-category-list-name">高数</span><span class="card-category-list-count">6</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="../categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><span class="card-category-list-name">线性代数</span><span class="card-category-list-count">6</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="../tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 1.5em; color: #99a9bf">线性代数</a> <a href="../tags/Python/" style="font-size: 1.3em; color: #99a1ac">Python</a> <a href="../tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="../tags/%E9%A6%99%E6%A9%99%E6%B4%BE/" style="font-size: 1.1em; color: #999">香橙派</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="../archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="../archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="../archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="../archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="../archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">13</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-08-05T11:11:01.246Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Pengunix</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="js/utils.js?v=4.13.0"></script><script src="js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div></div></body></html>
