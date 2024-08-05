@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>高等代数的研究对象 - Pengunix</title><link rel="manifest" href="../../../../manifest.json"><meta name="application-name" content="Pengunix&#039;s Blog"><meta name="msapplication-TileImage" content="/images/fav.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Pengunix&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="tag: 线性代数 是我自学线性代数的笔记，视频课程是 b 站上北大教授丘维声讲授的。笔记内容较为凌乱，我的目的是给我自己看，所以内容仅供参考，有什么问题欢迎在底部评论提出！ 一元高次方程一个未知量，次数无限大，研究方程的根是如何，以及有没有求根公式。这是经典代数研究的中心问题。 n 元一次方程组举例：以下是四个方程的三元一次方程组。"><meta property="og:type" content="blog"><meta property="og:title" content="高等代数的研究对象"><meta property="og:url" content="https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/"><meta property="og:site_name" content="Pengunix"><meta property="og:description" content="tag: 线性代数 是我自学线性代数的笔记，视频课程是 b 站上北大教授丘维声讲授的。笔记内容较为凌乱，我的目的是给我自己看，所以内容仅供参考，有什么问题欢迎在底部评论提出！ 一元高次方程一个未知量，次数无限大，研究方程的根是如何，以及有没有求根公式。这是经典代数研究的中心问题。 n 元一次方程组举例：以下是四个方程的三元一次方程组。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/27.png"><meta property="og:image" content="https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/01.png"><meta property="og:image" content="https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/57.png"><meta property="article:published_time" content="2023-06-14T09:15:20.000Z"><meta property="article:modified_time" content="2023-10-29T04:32:32.000Z"><meta property="article:author" content="Pengunix"><meta property="article:tag" content="线性代数"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/27.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/"},"headline":"高等代数的研究对象","image":["https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/27.png","https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/01.png","https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/57.png"],"datePublished":"2023-06-14T09:15:20.000Z","dateModified":"2023-10-29T04:32:32.000Z","author":{"@type":"Person","name":"Pengunix"},"publisher":{"@type":"Organization","name":"Pengunix","logo":{"@type":"ImageObject","url":"https://blog.pengunix.icu/images/logo.png"}},"description":"tag: 线性代数 是我自学线性代数的笔记，视频课程是 b 站上北大教授丘维声讲授的。笔记内容较为凌乱，我的目的是给我自己看，所以内容仅供参考，有什么问题欢迎在底部评论提出！ 一元高次方程一个未知量，次数无限大，研究方程的根是如何，以及有没有求根公式。这是经典代数研究的中心问题。 n 元一次方程组举例：以下是四个方程的三元一次方程组。"}</script><link rel="canonical" href="https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/"><link rel="icon" href="../../../../images/fav.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="../../../../css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="../../../../index.html"><img src="../../../../images/logo.png" alt="Pengunix" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="../../../../index.html">Home</a><a class="navbar-item" href="../../../../archives">Archives</a><a class="navbar-item" href="../../../../categories">Categories</a><a class="navbar-item" href="../../../../tags">Tags</a><a class="navbar-item" href="../../../../about">About</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-06-14T09:15:20.000Z" title="2023/6/14 05:15:20">2023-06-14</time>发表</span><span class="level-item"><time dateTime="2023-10-29T04:32:32.000Z" title="2023/10/29 00:32:32">2023-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="../../../../categories/%E9%AB%98%E6%95%B0/">高数</a><span> / </span><a class="link-muted" href="../../../../categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></span><span class="level-item">12 分钟读完 (大约1814个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">高等代数的研究对象</h1><div class="content"><p>tag: 线性代数 是我自学线性代数的笔记，视频课程是 b 站上北大教授丘维声讲授的。笔记内容较为凌乱，我的目的是给我自己看，所以内容仅供参考，有什么问题欢迎在底部评论提出！</p>
+<h3 id="一元高次方程"><a href="#一元高次方程" class="headerlink" title="一元高次方程"></a>一元高次方程</h3><p>一个未知量，次数无限大，研究方程的根是如何，以及有没有求根公式。这是经典代数研究的中心问题。</p>
+<h3 id="n-元一次方程组"><a href="#n-元一次方程组" class="headerlink" title="n 元一次方程组"></a>n 元一次方程组</h3><p>举例：以下是四个方程的三元一次方程组。</p>
+<span id="more"></span>
+
+<p>$$<br> \begin{cases} x_1+3x_2+x_3&#x3D;2 \\\ 3x_1+4x_2+2x_3&#x3D;9 \\ -x_1-5x_2+4x_3&#x3D;10 \\ 2x_1+7x_2+x_3&#x3D;1 \end{cases}<br>$$</p>
+<p>借用平面解析几何的思想，把关于 x, y 的一次关系称为线性关系，那么 n 元一次方程组又叫<strong>n 元线性方程组</strong>。<br>n 元线性方程组的表示方法：</p>
+<p>$$<br>(1):\begin{cases}<br>a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n&#x3D;b_1 \\<br>\cdots \cdots \\<br>a_{s1}x_1+a_{s2}x_2+\cdots+a_{sn}x_x&#x3D;b_s<br>\end{cases}<br>$$</p>
+<p>左侧都是未知量，右侧都是常量。<br>解法，消元法：都会，不必说。<br>其本质是系数做加减和倍数运算，那我们可以省略未知量 $x_1, x_2 \cdots x_n$把系数以表的形式列出，就会得到<strong>矩阵</strong>。</p>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>以上一个三元方程组为例，其系数构成的矩阵如下。</p>
+<p>$$<br>\begin{pmatrix}<br>1&amp;3&amp;1\\<br>3&amp;4&amp;2\\<br>-1&amp;-5&amp;4\\<br>2&amp;7&amp;1\\<br>\end{pmatrix}<br>$$</p>
+<p>纵为列，横为行，构成 4 行 4 列的 4x4 的矩阵，简称 4 级矩阵。<br>那么 s 行，n 列，有 s*n 个数排成 s 行 n 列的表，就是一个<strong>s*n 矩阵</strong>。<br>其中每个数称为这个矩阵的一个<strong>元素</strong>，第 i 行与第 j 列交叉位置的元素称为<strong>矩阵的(i,j)元</strong>。<br>如果矩阵的(i,j)元是$a_{ij}$,那么可以记作$A&#x3D;(a_{ij})$。<br>元素全为零的矩阵称为零矩阵，简记为 0，s 行 m 列的零矩阵记作$0_{s*m}$。<br>如果一个矩阵的行数和列数相等，则称它为<strong>方阵</strong>。m 行 m 列的方阵称为<strong>m 级矩阵</strong>。</p>
+<p>$$<br>A &#x3D; \begin{pmatrix}<br>a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\<br>a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2n}\\<br>\cdots \cdots\\<br>a_{s1}&amp;a_{s2}&amp;\cdots&amp;a_{sn}<br>\end{pmatrix}<br>$$</p>
+<p>矩阵可用大写字母表示，如矩阵 A。A 为方程(1)的系数组成的，叫做(1)的<strong>系数矩阵</strong>。</p>
+<p>$$<br>B &#x3D; \begin{pmatrix}<br>a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}&amp;b_1\\<br>a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2n}&amp;b_2\\<br>\cdots \cdots\\<br>a_{s1}&amp;a_{s2}&amp;\cdots&amp;a_{sn}&amp;b_s<br>\end{pmatrix}<br>$$</p>
+<p>B 由方程（1）的系数和常数组成构成 s*(n+1)矩阵，叫做（1）的<strong>增广矩阵</strong>，其对我们求解有很大的作用，接着就会讲解法。<br>总之，高等代数的研究对象的出发点就是<strong>n 元线性方程组</strong>，解法就是<strong>矩阵</strong>。<br>那么，<strong>解</strong>有哪些情况呢？可以再次借助平面几何的思想，两个直线相交有唯一的交点，也就是一个解。平行无交点，重合无穷多个交点。</p>
+<h3 id="n-元，n-维，n-维向量"><a href="#n-元，n-维，n-维向量" class="headerlink" title="n 元，n 维，n 维向量"></a>n 元，n 维，n 维向量</h3><p>一元是线，二元是平面，三元是空间，四元是时空，对应着一维，二维，三维，四维。<br>那么五维又是什么概念呢？要想理解五维及更高维度，我们可以研究线性方程中解的情况的判别。<br>以系数矩阵 A 为例当 n 为 2 时，两个数字组成了二元有序数组，就是平面向量的坐标。<br>n 为 3，n 为 4，同理。那么我们可以扩展到 n 维，成为 n 维向量，引入运算法则（加法、运算律、数乘、零向量、反向量）构成 n 维向量空间。<br>这样我们就可以研究解情况的判别和解集的结构了。<br>进一步，结合 n 维向量空间的性质抽象出了线性空间的概念。高维的概念可以投影到线性空间中，叫做<strong>线性映射</strong>。<br><img src="%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/27.png" alt="20230615092827.png"><br>只有加法和数乘的线性空间并不能涵盖向量的所有特性，例如，长度，方向，两个向量的夹角。要想将度量介入其中，可引入<strong>内积</strong>。</p>
+<h3 id="内积"><a href="#内积" class="headerlink" title="内积"></a>内积</h3><p>高中我们已经了解了他的定义式</p>
+<p>$$<br>\vec a \cdot \vec b&#x3D;|\vec a||\vec b|\cos &lt;\vec a,\vec b&gt;<br>$$</p>
+<p>两个向量的内积是一个数，所以内积是一个<strong>二元函数</strong>，也称为<strong>双线性函数</strong>。<br>借助内积，线性空间称为了<strong>具有度量的线性空间</strong>。</p>
+<ol>
+<li>欧几里得空间：实数域，具有度量的线性空间。有限维，例如三维空间。</li>
+<li>酉空间：复数域，具有度量的线性空间。</li>
+<li>…还有其他空间</li>
+</ol>
+<p>空间到自身的线性映射（投影）叫<strong>线性变换</strong>。</p>
+<ol>
+<li>欧几里得空间：正交变换，对称变换</li>
+<li>酉空间：酉变换，Hermite 变换</li>
+<li>..还有其他变换<br><img src="%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/01.png" alt="20230615151501.png"><blockquote>
+<p>线性代数的主线是研究线性空间和线性映射。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="一元高次方程的求根"><a href="#一元高次方程的求根" class="headerlink" title="一元高次方程的求根"></a>一元高次方程的求根</h3><p>$a_nx^n+a_{n-1}+\cdots+a_1x+a_0&#x3D;0$<br>以一元二次方程为例，我们的获得求根公式的方法是配方，也可以因式分解。<br>所以左侧的一元多项式（一元多项式环）要进行因式分解，就要研究一元多项式的结构。<br><img src="%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/57.png" alt="20230618203157.png"><br>伽罗瓦证明了五次和五次以上的方程没有求根公式，同时也提出了有根式解的充分必要条件是此方程的群是<strong>可解群</strong>。他的理论还引进了域的概念和群的概念，让代数学的研究对象发生了革命性的变革，经典代数研究一元高次方程的求根，现代近似代数学（抽象代数学）研究环、域、群系统的结构以及三者保持运算的映射。<br>我们不去研究抽象代数的具体内容（幸好不学），只是引入了环群域的概念。</p>
+<blockquote>
+<p>高等代数研究对象的第二部分就是一元或 n 元多项式环的结构和通用性质。</p>
+</blockquote>
+<h3 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h3><p><strong>数学思维的思维方式</strong></p>
+<ol>
+<li>观察客观现象（纷繁复杂）：联系生活，提出问题，研究问题。</li>
+<li>抓住主要特征：抽象出概念，建立模型。（概念非常多）</li>
+<li>探索结构：应用直觉，几何（可以看 3b1b 的视频），类比，归纳，联想，推理。</li>
+<li>猜测可能有的规律</li>
+<li>认证：深入分析，运用定义，公理，已经证明的定理进行逻辑推理。（地狱难度）</li>
+<li>揭示事物的内在规律（井然有序）</li>
+</ol>
+</div><div class="article-licensing box"><div class="licensing-title"><p>高等代数的研究对象</p><p><a href="https://blog.pengunix.icu/2023/06/14/高等代数的研究对象/">https://blog.pengunix.icu/2023/06/14/高等代数的研究对象/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Pengunix</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-06-14</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-10-29</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="../../../../tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="../../18/%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E8%A7%A3%E6%B3%95/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">第一节 线性方程组的解法</span></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://blog.pengunix.icu/2023/06/14/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%E7%9A%84%E7%A0%94%E7%A9%B6%E5%AF%B9%E8%B1%A1/';
+            this.page.identifier = '2023/06/14/高等代数的研究对象/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'Jhon' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="../../../../images/avatar.png" alt="Pengunix"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Pengunix</p><p class="is-size-6 is-block">Do u ever get a little bit tired of life?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="../../../../archives"><p class="title">13</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="../../../../categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="../../../../tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/pengunix" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/pengunix"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Bilibili" href="https://space.bilibili.com/357944209"><i class="fab fa-bilibili"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="../../../../categories/C/"><span class="level-start"><span class="level-item">C++</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../../../categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../../../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/"><span class="level-start"><span class="level-item">开发板</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="../../../../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/"><span class="level-start"><span class="level-item">香橙派</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="../../../../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"><span class="level-start"><span class="level-item">编程语言</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="../../../../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="../../../../categories/%E9%AB%98%E6%95%B0/"><span class="level-start"><span class="level-item">高数</span></span><span class="level-end"><span class="level-item tag">6</span></span></a><ul><li><a class="level is-mobile" href="../../../../categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><span class="level-start"><span class="level-item">线性代数</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-08-04T11:35:07.304Z">2024-08-04</time></p><p class="title"><a href="../../../../2024/08/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></p><p class="categories"><a href="../../../../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a> / <a href="../../../../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-30T16:00:00.000Z">2024-01-31</time></p><p class="title"><a href="../../../../2024/01/30/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%9B%BE%E8%AE%BA/">算法基础图论</a></p><p class="categories"><a href="../../../../categories/C/">C++</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-23T16:00:00.000Z">2024-01-24</time></p><p class="title"><a href="../../../../2024/01/23/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/">算法基础数论</a></p><p class="categories"><a href="../../../../categories/C/">C++</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-10-29T06:13:41.000Z">2023-10-29</time></p><p class="title"><a href="../../../10/29/OPENCV-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-1/">OPENCV-图像处理-1</a></p><p class="categories"><a href="../../../../categories/Python/">Python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-07-18T02:46:34.000Z">2023-07-18</time></p><p class="title"><a href="../../../07/17/%E9%A6%99%E6%A9%99%E6%B4%BEzero3%E7%82%B9%E4%BA%AEi2c-oled%E5%B1%8F%E5%B9%95/">香橙派zero3 I2C oled连接测试</a></p><p class="categories"><a href="../../../../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/">开发板</a> / <a href="../../../../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/">香橙派</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="../../../../archives/2024/08/"><span class="level-start"><span class="level-item">八月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../../../archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../../../archives/2023/10/"><span class="level-start"><span class="level-item">十月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../../../archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="../../../../archives/2023/06/"><span class="level-start"><span class="level-item">六月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="../../../../tags/Python/"><span class="tag">Python</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../../../../tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../../../../tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><span class="tag">线性代数</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="../../../../tags/%E9%A6%99%E6%A9%99%E6%B4%BE/"><span class="tag">香橙派</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="../../../../index.html"><img src="../../../../images/logo.png" alt="Pengunix" height="28"></a><p class="is-size-7"><span>&copy; 2024 Pengunix</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2024</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="../../../../js/column.js"></script><script src="../../../../js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="../../../../js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="../../../../js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="../../../../js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="../../../../js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"../../../../content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>第三节 行列式 - Pengunix</title><link rel="manifest" href="../../../../manifest.json"><meta name="application-name" content="Pengunix&#039;s Blog"><meta name="msapplication-TileImage" content="/images/fav.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Pengunix&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="数域 K 上已知一个二元一次方程组： $$\begin{cases}a_{11}x_1+a_{12}x_2&amp;#x3D;b_1 \\a_{21}x_1+a_{22}x_2&amp;#x3D;b_2\end{cases}$$ 其系数矩阵 $$A:\begin{pmatrix}a_{11}&amp;amp;a_{12} \\a_{21}&amp;amp;a_{22}\end{pmatrix}$$"><meta property="og:type" content="blog"><meta property="og:title" content="第三节 行列式"><meta property="og:url" content="https://blog.pengunix.icu/2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/"><meta property="og:site_name" content="Pengunix"><meta property="og:description" content="数域 K 上已知一个二元一次方程组： $$\begin{cases}a_{11}x_1+a_{12}x_2&amp;#x3D;b_1 \\a_{21}x_1+a_{22}x_2&amp;#x3D;b_2\end{cases}$$ 其系数矩阵 $$A:\begin{pmatrix}a_{11}&amp;amp;a_{12} \\a_{21}&amp;amp;a_{22}\end{pmatrix}$$"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://blog.pengunix.icu/2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/%E8%A1%8C%E5%88%97%E5%BC%8F/R.png"><meta property="article:published_time" content="2023-07-07T04:11:13.000Z"><meta property="article:modified_time" content="2023-10-29T04:32:32.000Z"><meta property="article:author" content="Pengunix"><meta property="article:tag" content="线性代数"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://blog.pengunix.icu/2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/%E8%A1%8C%E5%88%97%E5%BC%8F/R.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.pengunix.icu/2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/"},"headline":"第三节 行列式","image":["https://blog.pengunix.icu/2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/%E8%A1%8C%E5%88%97%E5%BC%8F/R.png"],"datePublished":"2023-07-07T04:11:13.000Z","dateModified":"2023-10-29T04:32:32.000Z","author":{"@type":"Person","name":"Pengunix"},"publisher":{"@type":"Organization","name":"Pengunix","logo":{"@type":"ImageObject","url":"https://blog.pengunix.icu/images/logo.png"}},"description":"数域 K 上已知一个二元一次方程组： $$\\begin{cases}a_{11}x_1+a_{12}x_2&#x3D;b_1 \\\\a_{21}x_1+a_{22}x_2&#x3D;b_2\\end{cases}$$ 其系数矩阵 $$A:\\begin{pmatrix}a_{11}&amp;a_{12} \\\\a_{21}&amp;a_{22}\\end{pmatrix}$$"}</script><link rel="canonical" href="https://blog.pengunix.icu/2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/"><link rel="icon" href="../../../../images/fav.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="../../../../css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="../../../../index.html"><img src="../../../../images/logo.png" alt="Pengunix" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="../../../../index.html">Home</a><a class="navbar-item" href="../../../../archives">Archives</a><a class="navbar-item" href="../../../../categories">Categories</a><a class="navbar-item" href="../../../../tags">Tags</a><a class="navbar-item" href="../../../../about">About</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-07-07T04:11:13.000Z" title="2023/7/7 00:11:13">2023-07-07</time>发表</span><span class="level-item"><time dateTime="2023-10-29T04:32:32.000Z" title="2023/10/29 00:32:32">2023-10-29</time>更新</span><span class="level-item"><a class="link-muted" href="../../../../categories/%E9%AB%98%E6%95%B0/">高数</a><span> / </span><a class="link-muted" href="../../../../categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></span><span class="level-item">11 分钟读完 (大约1639个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">第三节 行列式</h1><div class="content"><p>数域 K 上已知一个二元一次方程组：</p>
+<p>$$<br>\begin{cases}<br>a_{11}x_1+a_{12}x_2&#x3D;b_1 \\<br>a_{21}x_1+a_{22}x_2&#x3D;b_2<br>\end{cases}<br>$$</p>
+<p>其系数矩阵</p>
+<p>$$<br>A:\begin{pmatrix}<br>a_{11}&amp;a_{12} \\<br>a_{21}&amp;a_{22}<br>\end{pmatrix}<br>$$</p>
+<span id="more"></span>
+
+<p>表示方法（二阶行列式）：</p>
+<p>$$<br>det(A)&#x3D;|A|&#x3D;a_{11}a_{22}-a_{12}a_{21}<br>$$</p>
+<p>在数域 K 上方程组有唯一解的充分必要条件是$|A|\neq 0$。</p>
+<p>从二阶行列式来看，计算结果就是一个对角线的积减去另一个对角线（反对角线）的积。<br>定义：是 2!项代数和，其中每一项是取自不同行、不同列的两个元素的乘积，每一项的行指标成自然序（从小到大）排好位置。当列指标按自然序排列时，该项带正号。反之，该项带负号。</p>
+<h3 id="n-元排列"><a href="#n-元排列" class="headerlink" title="n 元排列"></a>n 元排列</h3><p>1,2,…..,n 的一个全排列称为一个<strong>n 元排列</strong>。（或 n 个不同的正整数）<br>1,2,….,n 形成的 n 元排列有 n!个。（或 n 个不同的正整数）<br>例如三元排列有 123,132,213,231,312,321 共 6 个。<br>四元排列 2431 从左到右 顺序（从小到大）的数对有：23,24<br>逆序的数对有：21,43,41,31<br>逆序的数对的数目称为这个排列的<strong>逆序数</strong>。所以 2431 的逆序数是 4，记作$\tau (2431)&#x3D;4$。<br>逆序数是偶（奇）数的排列称为<strong>偶（奇）排列</strong>。</p>
+<p>$$<br>偶排列2431<br>\xrightarrow[]{4和1互换位置，其余的数不动称为一个对换,记作(4,1)}<br>2134<br>$$</p>
+<p>排列 2134 的逆序数为 1 是奇数，所以 2134 是一个奇排列。<br>定理 1：对换改变排列的奇偶性。<br>证明：先看对换的两个数相邻的情形：</p>
+<p>$$<br>\cdots i \space j \cdots (1) \xrightarrow[]{(i,j)} \cdots j \space i \cdots (2)<br>$$</p>
+<p>排列对换后，i,j 二者顺序交换，顺序变为逆序，逆序变为顺序，其他数不变。<br>排列（1）与（2）逆序数相差 1，从而排列（1）与排列（2）奇偶性相反。<br>一般情形：</p>
+<p>$$<br>\cdots i \space k_1 \cdots k_s \space j \cdots (3)<br>\xrightarrow[]{(i,j)}<br>\cdots j \space k_1 \cdots k_s \space i \cdots (4)<br>$$</p>
+<p>由两个数相邻的情形，可多次进行相邻对换来达到以上对换的效果。</p>
+<p>$$<br>\cdots i \space k_1 \cdots k_s \space j \cdots (3)<br>\xrightarrow[]{(i,k_1) \cdots (i,k_s),(i,j)}<br>\cdots k_1 \cdots k_s \space j \space i \cdots<br>\xrightarrow[]{(j,k_s)\cdots (j,k_1)}<br>\cdots j \space k_1 \cdots k_s \space i \cdots (4)<br>$$</p>
+<p>排列（2）到排列（4）经过(s+1)+s&#x3D;2s+1 次相邻两数的对换。每变换一次改变一次奇偶性，经过奇数次，最终奇偶性相反。<br>例如：</p>
+<p>$$<br>25143 \xrightarrow[]{(5,3)}23145 \xrightarrow[]{(3,1)} 21345 \xrightarrow[]{(2,1)} 12345(自然序，偶排列)<br>$$</p>
+<p>定理 2：所以任意一个 n 元排列 $j_1,j_2, \cdots j_n$到自然序排列$1, 2, 3, \cdots n$可以经过一系列的对换互变且所作对换的次数与原排列的奇偶性相同。<br>证明：</p>
+<p>$$<br>j_1,j_2,j_3 \cdots j_n \xrightarrow[]{s次对换}1,2,\cdots n (偶排列)<br>$$</p>
+<p>设原排列是奇排列则 s 必为奇数，原排列是偶排列则 s 必为偶数。</p>
+<h3 id="n-阶行列式的定义"><a href="#n-阶行列式的定义" class="headerlink" title="n 阶行列式的定义"></a>n 阶行列式的定义</h3><p>定义 1：n 阶行列式是 n!项的代数和，其中每一项是不同行不同列的 n 个元素乘积，每一项按行指标成自然序排好位置，当列指标形成的排列是偶排列时，带正号，反之就带负号。</p>
+<p>$$<br>\left|<br>\begin{matrix}<br>a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\<br>a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots \\<br>a_{n1} &amp;a_{n2} &amp; \cdots &amp;a_{nn}<br>\end{matrix}<br>\right|<br>:&#x3D;<br>\sum_{j_1j_2 \cdots j_n} (-1)^{\tau(j_1j_2 \cdots j_n)}a_{1j_1}a_{2j_2}\cdots a_{nj_n}<br>\space (1)<br>$$</p>
+<p>$$<br>设A&#x3D;<br>\begin{pmatrix}<br>a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\<br>a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots \\<br>a_{n1} &amp;a_{n2} &amp; \cdots &amp;a_{nn}<br>\end{pmatrix}<br>$$</p>
+<p>n 阶行列式（1）也称为 n 级矩阵 A 的行列式记作：|A|或 det A<br>(1)式称为 n 阶行列式的<strong>完全展开式</strong>。<br>矩阵 A 可以简记为$A&#x3D;(a_{ij})$，其中$a_{ij}$称为 A 的(i,j)元。</p>
+<h4 id="一阶行列式"><a href="#一阶行列式" class="headerlink" title="一阶行列式"></a>一阶行列式</h4><p>$|a|&#x3D;a$ 不要和实数的绝对值混淆，绝对值不能只等于其本身。</p>
+<h4 id="三阶行列式"><a href="#三阶行列式" class="headerlink" title="三阶行列式"></a>三阶行列式</h4><p>$$<br>\left|<br>\begin{matrix}<br>a_{11}&amp;a_{12}&amp;a_{13} \\<br>a_{21}&amp;a_{22}&amp;a_{23} \\<br>a_{31}&amp;a_{32}&amp;a_{33} \\<br>\end{matrix}<br>\right|<br>&#x3D;a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a{32}-a_{12}a_{21}a_{33}<br>$$</p>
+<p>偶排列：123 312 231<br>奇排列：132 321 213<br>计算图解如下，可以记这个图<br><img src="%E8%A1%8C%E5%88%97%E5%BC%8F/R.png" alt="R.png"></p>
+<h4 id="n-阶行列式"><a href="#n-阶行列式" class="headerlink" title="n 阶行列式"></a>n 阶行列式</h4><p>$$<br>\left|<br>\begin{matrix}<br>a_{11}&amp;a_{12}&amp;a_{13}&amp;\cdots&amp;a_{1,n-2}&amp;a_{1,n-1}&amp;a_{1,n} \\<br>0&amp;a_{22}&amp;a_{23}&amp;\cdots&amp;a_{2,n-2}&amp;a_{2,n-1}&amp;a_{2,n} \\<br>0&amp;0&amp;a_{33}&amp;\cdots&amp;a_{3,n-2}&amp;a_{3,n-1}&amp;a_{3,n} \\<br>\vdots&amp;\vdots&amp;\vdots&amp;\cdots&amp;\vdots&amp;\vdots&amp;\vdots \\<br>0&amp;0&amp;0&amp;\cdots&amp;0&amp;a_{n-1,n-1}&amp;a_{n-1,n} \\<br>0&amp;0&amp;0&amp;\cdots&amp;0&amp;0&amp;a_{nn}<br>\end{matrix}<br>\right|<br>&#x3D;a_{11}a_{22}a_{33}\cdots a_{n-1,n-1}a_{nn}<br>$$</p>
+<p>主对角线下方元素全为零，这样的行列式称为<strong>上三角形行列式</strong>。<br>命题 1：上三角形行列式的值等于主对角线上 n 个元素的乘积。</p>
+<p>按行指标排列的 n 阶行列式的一项：$(-1)^{\tau(j_1j_2 \cdots j_n)}a_{1j_1}a_{2j_2}\cdots a_{nj_n}$，但乘法具有交换律，所以可以总结出一个更通用的式子。<br>例如：将三阶行列式中的$a_{12}a_{23}a_{31}$变为$a_{23}a_{12}a_{31}$，这时如何判断此项的符号呢？<br>行指标 213 的逆序数是 1，列指标 321 的逆序数是 3，$(-1)^{1+3}&#x3D;1$,所以符号为正。因此，这一项可以写成</p>
+<p>$$<br>(-1)^{\tau(213)+\tau(321)}a_{23}a_{12}a_{31}<br>$$</p>
+<p>其他项同理:</p>
+<p>$$<br>(-1)^{\tau(i_1i_2\cdot i_n)+\tau(k_1k_2 \cdots k_n)}a_{i_1k_1}a_{i_2k_2}\cdots a_{i_nk_n}<br>$$</p>
+<p>理由如下：<br>首先</p>
+<p>$$<br>a_{1j_1}a_{2j_2}\cdots a_{nj_n} \xrightarrow[]{行s次对换+列s次对换}a_{i_1k_1}a_{i_2k_2}\cdots a_{i_nk_n}<br>$$</p>
+<p>根据定理 2 和定理 1：</p>
+<p>$$<br>\begin{align}<br>(-1)^{\tau(i_1i_2 \cdots i_n)} &#x3D;&amp; (-1)^s \\<br>(-1)^{\tau(j_1j_2 \cdots j_n)}(-1)^s &#x3D;&amp; (-1)^{\tau(k_1k_2 \cdots k_n)} \\<br>\end{align}<br>$$</p>
+<p>从而</p>
+<p>$$<br>(-1)^{\tau(i_1i_2 \cdots i_n)+\tau(k_1k_2 \cdots k_n)}&#x3D;(-1)^s \cdot (-1)^{\tau (j_1j_2 \cdots j_n)}\cdot (-1)^s&#x3D;(-1)^{\tau(j_1j_2 \cdots j_n)}<br>$$</p>
+<p>因此推论成立。<br>根据以上分析，给定行指标的一个排列$i_1i_2 \cdots i_n$，n 级矩阵 A 的行列式|A|为</p>
+<p>$$<br>|A|&#x3D; \sum_{k_1k_2 \cdots k_n}(-1)^{\tau(i_1i_2 \cdots i_n)+\tau(k_1k_2 \cdots k_n)}a_{i_1k_1}a_{i_2k_2} \cdots a_{i_nk_n}<br>$$</p>
+<p>或给定列指标的一个排列$k_1k_1 \cdots k_n$，n 阶行列式|A|为</p>
+<p>$$<br>|A|&#x3D; \sum_{i_1i_2 \cdots i_n}(-1)^{\tau(i_1i_2 \cdots i_n)}a_{i_1k_1}a_{i_2k_2} \cdots a_{i_nk_n}<br>$$</p>
+<p>所以 n 阶行列式也可以按列指标的排成自然序，此时用行指标所成排列的奇偶性来决定该项的正负号。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>第三节 行列式</p><p><a href="https://blog.pengunix.icu/2023/07/07/行列式/">https://blog.pengunix.icu/2023/07/07/行列式/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Pengunix</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-07-07</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-10-29</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="../../../../tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="../../11/%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E6%80%A7%E8%B4%A8/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">第四节 行列式的性质</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="../../05/%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E8%A7%A3%E7%9A%84%E6%83%85%E5%86%B5%E5%8F%8A%E5%88%A4%E5%88%AB%E5%87%86%E5%88%99/"><span class="level-item">第二节 线性方程组解的情况及判别准则</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://blog.pengunix.icu/2023/07/07/%E8%A1%8C%E5%88%97%E5%BC%8F/';
+            this.page.identifier = '2023/07/07/行列式/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'Jhon' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="../../../../images/avatar.png" alt="Pengunix"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Pengunix</p><p class="is-size-6 is-block">Do u ever get a little bit tired of life?</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="../../../../archives"><p class="title">13</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="../../../../categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="../../../../tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/pengunix" target="_blank" rel="me noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/pengunix"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Bilibili" href="https://space.bilibili.com/357944209"><i class="fab fa-bilibili"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="../../../../categories/C/"><span class="level-start"><span class="level-item">C++</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../../../categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../../../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/"><span class="level-start"><span class="level-item">开发板</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="../../../../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/"><span class="level-start"><span class="level-item">香橙派</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="../../../../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"><span class="level-start"><span class="level-item">编程语言</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="../../../../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="../../../../categories/%E9%AB%98%E6%95%B0/"><span class="level-start"><span class="level-item">高数</span></span><span class="level-end"><span class="level-item tag">6</span></span></a><ul><li><a class="level is-mobile" href="../../../../categories/%E9%AB%98%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><span class="level-start"><span class="level-item">线性代数</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-08-04T11:35:07.304Z">2024-08-04</time></p><p class="title"><a href="../../../../2024/08/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></p><p class="categories"><a href="../../../../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a> / <a href="../../../../categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-30T16:00:00.000Z">2024-01-31</time></p><p class="title"><a href="../../../../2024/01/30/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%9B%BE%E8%AE%BA/">算法基础图论</a></p><p class="categories"><a href="../../../../categories/C/">C++</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-23T16:00:00.000Z">2024-01-24</time></p><p class="title"><a href="../../../../2024/01/23/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%95%B0%E8%AE%BA/">算法基础数论</a></p><p class="categories"><a href="../../../../categories/C/">C++</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-10-29T06:13:41.000Z">2023-10-29</time></p><p class="title"><a href="../../../10/29/OPENCV-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-1/">OPENCV-图像处理-1</a></p><p class="categories"><a href="../../../../categories/Python/">Python</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-07-18T02:46:34.000Z">2023-07-18</time></p><p class="title"><a href="../../17/%E9%A6%99%E6%A9%99%E6%B4%BEzero3%E7%82%B9%E4%BA%AEi2c-oled%E5%B1%8F%E5%B9%95/">香橙派zero3 I2C oled连接测试</a></p><p class="categories"><a href="../../../../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/">开发板</a> / <a href="../../../../categories/%E5%BC%80%E5%8F%91%E6%9D%BF/%E9%A6%99%E6%A9%99%E6%B4%BE/">香橙派</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="../../../../archives/2024/08/"><span class="level-start"><span class="level-item">八月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../../../archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="../../../../archives/2023/10/"><span class="level-start"><span class="level-item">十月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="../../../../archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="../../../../archives/2023/06/"><span class="level-start"><span class="level-item">六月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="../../../../tags/Python/"><span class="tag">Python</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="../../../../tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="../../../../tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"><span class="tag">线性代数</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="../../../../tags/%E9%A6%99%E6%A9%99%E6%B4%BE/"><span class="tag">香橙派</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="../../../../index.html"><img src="../../../../images/logo.png" alt="Pengunix" height="28"></a><p class="is-size-7"><span>&copy; 2024 Pengunix</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2024</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="../../../../js/column.js"></script><script src="../../../../js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="../../../../js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="../../../../js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="../../../../js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="../../../../js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"../../../../content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
