@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>FreeRTOS概念-1 | Pengunix</title><meta name="author" content="Pengunix"><meta name="copyright" content="Pengunix"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="实时操作系统（Real-time operating system, RTOS），又称即时操作系统，它会按照排序运行、管理系统资源，并为开发应用程序提供一致的基础。实时操作系统与一般的操作系统相比，最大的特色就是“实时性”，如果有一个任务需要执行，实时操作系统会马上（在较短时间内）执行该任务，不会有较长的延时。这种特性保证了各个任务的及时执行。  概念：TICKtime slicing 的最小单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FreeRTOS概念-1">
+<meta property="og:url" content="https://blog.pengunix.icu/2023/12/21/index.html">
+<meta property="og:site_name" content="Pengunix">
+<meta property="og:description" content="实时操作系统（Real-time operating system, RTOS），又称即时操作系统，它会按照排序运行、管理系统资源，并为开发应用程序提供一致的基础。实时操作系统与一般的操作系统相比，最大的特色就是“实时性”，如果有一个任务需要执行，实时操作系统会马上（在较短时间内）执行该任务，不会有较长的延时。这种特性保证了各个任务的及时执行。  概念：TICKtime slicing 的最小单">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bing.img.run/rand_1366x768.php">
+<meta property="article:published_time" content="2023-12-21T00:10:34.000Z">
+<meta property="article:modified_time" content="2024-09-15T12:33:57.859Z">
+<meta property="article:author" content="Pengunix">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bing.img.run/rand_1366x768.php"><link rel="shortcut icon" href="/images/fav.png"><link rel="canonical" href="https://blog.pengunix.icu/2023/12/21/index.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.11.1/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FreeRTOS概念-1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-15 20:33:57'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://bing.img.run/rand_1366x768.php')"><nav id="nav"><span id="blog-info"><a href="/" title="Pengunix"><img class="site-icon" src="/images/logo.png"/></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">FreeRTOS概念-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-21T00:10:34.000Z" title="发表于 2023-12-21 08:10:34">2023-12-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-15T12:33:57.859Z" title="更新于 2024-09-15 20:33:57">2024-09-15</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p><strong>实时操作系统</strong>（Real-time operating system, RTOS），又称即时操作系统，它会按照排序运行、管理系统资源，并为开发应用程序提供一致的基础。<br>实时操作系统与一般的操作系统相比，最大的特色就是“实时性”，如果有一个任务需要执行，实时操作系统会马上（在较短时间内）执行该任务，不会有较长的延时。这种特性保证了各个任务的及时执行。</p>
+</blockquote>
+<h2 id="概念：TICK"><a href="#概念：TICK" class="headerlink" title="概念：TICK"></a>概念：TICK</h2><p>time slicing 的最小单位，可在menuconfig中更改，一些函数如<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vTaskDelay(tick);</span><br><span class="line">vTaskDelay(<span class="number">1000</span>/portTICK_PERIOD_MS);</span><br></pre></td></tr></table></figure><br>是以tick为单位延时，对应的宏为<strong>portTICK_PERIOD_MS</strong>，可写第二行代码转为毫秒。</p>
+<h2 id="概念：MUTEX"><a href="#概念：MUTEX" class="headerlink" title="概念：MUTEX"></a>概念：MUTEX</h2><p>多线程访问全局变量，解决重复写入和冲突等问题。<br>相当于创建一把钥匙，这个钥匙可以用来访问全局变量，每个任务可以选择性获取和给出这把钥匙，避免多个任务对全局变量的修改冲突。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建钥匙</span></span><br><span class="line">SemaphoreHandle xMutexInventory;</span><br><span class="line"></span><br><span class="line"><span class="comment">//main()</span></span><br><span class="line"><span class="comment">// 创建mutex</span></span><br><span class="line">xMutexInventory = xSemaphoreCreateMutex();</span><br><span class="line"><span class="keyword">if</span> (xMutexInventory == <span class="literal">NULL</span>) {</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"创建Semaphore失败，检查是否有足够内存"</span>)</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">	xTaskCreate(...);</span><br><span class="line">	...</span><br><span class="line">}</span><br><span class="line"><span class="comment">//task()</span></span><br><span class="line"><span class="type">int</span> timeOut = <span class="number">1000</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">task</span><span class="params">()</span> {</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) {</span><br><span class="line">		<span class="comment">// 在timeout时间内如果能够获取就继续</span></span><br><span class="line">			<span class="keyword">if</span> (xSemaphoreTake(xMutexInventory, timeOut) == pdPASS){</span><br><span class="line">				<span class="comment">// 被MUTEX保护的内容叫做Critical Section</span></span><br><span class="line">				...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">				<span class="comment">// 返还钥匙</span></span><br><span class="line">				xSemaphoreGive(xMutexInventory);</span><br><span class="line">			} <span class="keyword">else</span> {</span><br><span class="line">				<span class="comment">// 无法获取钥匙做什么</span></span><br><span class="line">			}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用多核心"><a href="#使用多核心" class="headerlink" title="使用多核心"></a>使用多核心</h2><p><strong>xPortGetCoreID()</strong> 获取当前任务工作在哪个核心。<br><strong>xTaskCreatePinnedToCore()</strong> 设置任务工作在哪个核心<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xTaskCreatePinnedToCore( TaskFunction_t pxTaskCode, </span><br><span class="line"><span class="type">const</span> <span class="type">char</span> * <span class="type">const</span> pcName,</span><br><span class="line"><span class="type">const</span> <span class="type">uint32_t</span> usStackDepth,</span><br><span class="line"><span class="type">void</span> * <span class="type">const</span> pvParameters,</span><br><span class="line">UBaseType_t uxPriority,</span><br><span class="line">TaskHandle_t * <span class="type">const</span> pxCreatedTask,</span><br><span class="line"><span class="type">const</span> BaseType_t xCoreID</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h2 id="以绝对的频率运行任务"><a href="#以绝对的频率运行任务" class="headerlink" title="以绝对的频率运行任务"></a>以绝对的频率运行任务</h2><p><strong>uint32_t tick  = xTaskGetTickCount()</strong> 获取tick数。<br>一种实现方式<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">task</span><span class="params">(<span class="type">void</span> *pd)</span> {</span><br><span class="line">	<span class="keyword">for</span> (;;) {</span><br><span class="line">		<span class="type">uint32_t</span> a = xTaskGetTickCount();</span><br><span class="line">		<span class="comment">// do something</span></span><br><span class="line"></span><br><span class="line">		<span class="type">uint32_t</span> b = xTaskGetTickCount();</span><br><span class="line">		vTaskDelay(<span class="number">3000</span> - (b-a));</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure><br>这种方法存在弊端：其中a b的各种运算也需要消耗时间，频率不准确。<br>另一种方案<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">task</span><span class="params">(<span class="type">void</span> *pd)</span> {</span><br><span class="line">	<span class="type">static</span> <span class="type">float</span> price = <span class="number">99.57</span>;</span><br><span class="line"></span><br><span class="line">	TickType_t xLastWakeTime = xTaskGetTickCount();</span><br><span class="line">	<span class="type">const</span> TickType_t xFrequency = <span class="number">3000</span>; <span class="comment">// 间隔3s</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(;;) {</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>, price);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		vTaskDelayUntil(&amp;xLastWakeTime, xFrequency); <span class="comment">// 第一个参数给指针类型让此函数自动更新XLastWakeTime</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<h2 id="软件定时器"><a href="#软件定时器" class="headerlink" title="软件定时器"></a>软件定时器</h2><ol>
+<li><strong>TimerHandle_t lockHandle, checkHandle;</strong> 声明两个Handle。</li>
+<li>创建<strong>Timer</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">lockCarCallback</span><span class="params">(TimerHandle_t xTimer)</span> {</span><br><span class="line">	<span class="comment">// do something</span></span><br><span class="line">}</span><br><span class="line">lockHandle = xTimerCreate(<span class="string">"Lock Car"</span>, <span class="comment">// 名字</span></span><br><span class="line">						 <span class="number">2000</span>,  <span class="comment">// 时间 2000tick</span></span><br><span class="line">						 pdFALSE, <span class="comment">// 一次性事件 timer时间内按多次按钮只执行一次</span></span><br><span class="line">								<span class="comment">// pdTRUE 多次事件 可多次执行</span></span><br><span class="line">						 (<span class="type">void</span>*)<span class="number">0</span>, <span class="comment">// ID 空指针 多个timer需要改变</span></span><br><span class="line">						 lockCarCallback); <span class="comment">// 回调函数</span></span><br></pre></td></tr></table></figure></li>
+<li>开始Timer<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">carKey</span><span class="params">(<span class="type">void</span> *pd)</span> {</span><br><span class="line">	gpio_set_direction(GPIO_NUM_23, GPIO_MODE_INPUT);</span><br><span class="line">	<span class="keyword">for</span>(;;){</span><br><span class="line">		<span class="keyword">if</span> (gpio_get_level(GPIO_NUM_23) == <span class="number">0</span>) {</span><br><span class="line">			<span class="comment">// timeout 3000 ticks</span></span><br><span class="line">			<span class="comment">// xTimerStart 只是开始时间而已，不是创造时间对象</span></span><br><span class="line">			<span class="comment">// 所以多次按按钮不会有多个时间对象生成</span></span><br><span class="line">			<span class="comment">// 多次按按钮相当于每次重置timer     xTimerReset()</span></span><br><span class="line">			<span class="keyword">if</span>(xTimerStart(lockHandle, <span class="number">3000</span>) == pdPASS) {</span><br><span class="line">				<span class="comment">// 将要锁车</span></span><br><span class="line">			} <span class="keyword">else</span> {</span><br><span class="line">				<span class="comment">// 不能锁车</span></span><br><span class="line">			}</span><br><span class="line">			vTaskDelay(<span class="number">100</span>); <span class="comment">// 按钮防抖</span></span><br><span class="line">		</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当pdTRUE 无限大的delay 当此timer负责极其重要的传感器任务时</span></span><br><span class="line">xTimerStart(checkHandle, portMAX_DELAY);</span><br><span class="line"></span><br><span class="line">xTaskCreate(carKey,</span><br><span class="line">		   <span class="string">"Check if key was pushed"</span>,</span><br><span class="line">		   <span class="number">1024</span> * <span class="number">1</span>,</span><br><span class="line">		   <span class="literal">NULL</span>,</span><br><span class="line">		   <span class="number">1</span>,</span><br><span class="line">		   <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="任务内存管理"><a href="#任务内存管理" class="headerlink" title="任务内存管理"></a>任务内存管理</h2><h3 id="查看占用"><a href="#查看占用" class="headerlink" title="查看占用"></a>查看占用</h3><strong>uint32_t size = esp_get_free_heap_size()</strong> 获取空闲heap大小<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">"Free heap size: %ld \n"</span>, esp_get_free_heap_size());</span><br><span class="line"><span class="comment">// 每个任务除stack size 外 还占有大概300多字节的空间 用于恢复和控制任务。</span></span><br><span class="line"><span class="comment">// 调用printf可能会消耗1060字节左右的空间</span></span><br></pre></td></tr></table></figure>
+<strong>int waterMark = uxTaskGetStackHighWaterMark(taskHandle)</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> waterMark = uxTaskGetStackHighWaterMark(t1);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"Water mark: %d \n"</span>, waterMark);</span><br></pre></td></tr></table></figure>
+利用此功能来确定任务栈内存的最低水平<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">demo_task</span><span class="params">(<span class="type">void</span> *pd)</span> </span>{</span><br><span class="line">	<span class="type">uint8_t</span> statck_hwm=<span class="number">0</span>, temp;</span><br><span class="line">	<span class="keyword">for</span> (;;) {</span><br><span class="line">		temp = <span class="built_in">uxTaskGetStackHighWaterMark</span>(<span class="literal">nullptr</span>); <span class="comment">// 空指针代表当前任务</span></span><br><span class="line">		<span class="keyword">if</span> (!stack_hwm || temp&lt;stack_hwm) {</span><br><span class="line">			stack_hwm = temp;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"Stack size for demo_task %u\n"</span>, stack_hwm);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="任务管理"><a href="#任务管理" class="headerlink" title="任务管理"></a>任务管理</h2><h4 id="任务的暂停恢复与删除"><a href="#任务的暂停恢复与删除" class="headerlink" title="任务的暂停恢复与删除"></a>任务的暂停恢复与删除</h4><strong>vTaskSuspend()</strong>, <strong>vTaskResume()</strong>, <strong>vTaskDelete()</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TaskHandle_t bHandle = <span class="literal">NULL</span>;</span><br><span class="line">vTaskCreate(Task, <span class="string">"TASK"</span>, <span class="number">1024</span>*<span class="number">4</span>, <span class="literal">NULL</span>, <span class="number">1</span>, &amp;bHandle);</span><br><span class="line">vTaskSuspend(bHandle);</span><br><span class="line">vTaskResume(bHandle);</span><br><span class="line"><span class="comment">// 一定要判断bHandle是否为空，以及删除后将bHandle置空。</span></span><br><span class="line">vTaskDelete(bHandle);</span><br><span class="line">bHandle = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.pengunix.icu">Pengunix</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.pengunix.icu/2023/12/21/">https://blog.pengunix.icu/2023/12/21/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.pengunix.icu" target="_blank">Pengunix</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://bing.img.run/rand_1366x768.php" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/01/22/" title="pytorch基本用法"><img class="cover" src="https://bing.img.run/rand_1366x768.php" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">pytorch基本用法</div></div></a></div><div class="next-post pull-right"><a href="/2023/10/29/" title="OPENCV-图像处理-1"><img class="cover" src="https://bing.img.run/rand_1366x768.php" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">OPENCV-图像处理-1</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Pengunix</div><div class="author-info__description">Pengunix blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/pengunix"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/pengunix" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/357944209" target="_blank" title="Bilibili"><i class="fab fa-bilibili" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">域名更新啦！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%9ATICK"><span class="toc-number">1.</span> <span class="toc-text">概念：TICK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%9AMUTEX"><span class="toc-number">2.</span> <span class="toc-text">概念：MUTEX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%9A%E6%A0%B8%E5%BF%83"><span class="toc-number">3.</span> <span class="toc-text">使用多核心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E7%BB%9D%E5%AF%B9%E7%9A%84%E9%A2%91%E7%8E%87%E8%BF%90%E8%A1%8C%E4%BB%BB%E5%8A%A1"><span class="toc-number">4.</span> <span class="toc-text">以绝对的频率运行任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text">软件定时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">任务内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8D%A0%E7%94%A8"><span class="toc-number">6.1.</span> <span class="toc-text">查看占用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">任务管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%9A%82%E5%81%9C%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="toc-number">7.0.1.</span> <span class="toc-text">任务的暂停恢复与删除</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/15/" title="STM32裸机与FreeRTOS下串口协议选型与对比"><img src="https://bing.img.run/rand_1366x768.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="STM32裸机与FreeRTOS下串口协议选型与对比"/></a><div class="content"><a class="title" href="/2024/09/15/" title="STM32裸机与FreeRTOS下串口协议选型与对比">STM32裸机与FreeRTOS下串口协议选型与对比</a><time datetime="2024-09-15T12:04:52.000Z" title="发表于 2024-09-15 20:04:52">2024-09-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/07/" title="在Archlinux下配置stm32开发环境"><img src="https://bing.img.run/rand_1366x768.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Archlinux下配置stm32开发环境"/></a><div class="content"><a class="title" href="/2024/09/07/" title="在Archlinux下配置stm32开发环境">在Archlinux下配置stm32开发环境</a><time datetime="2024-09-07T08:43:31.000Z" title="发表于 2024-09-07 16:43:31">2024-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/04/" title="正则表达式"><img src="https://bing.img.run/rand_1366x768.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="正则表达式"/></a><div class="content"><a class="title" href="/2024/08/04/" title="正则表达式">正则表达式</a><time datetime="2024-08-04T11:35:07.304Z" title="发表于 2024-08-04 19:35:07">2024-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/31/" title="算法基础图论"><img src="https://bing.img.run/rand_1366x768.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法基础图论"/></a><div class="content"><a class="title" href="/2024/01/31/" title="算法基础图论">算法基础图论</a><time datetime="2024-01-30T16:00:00.000Z" title="发表于 2024-01-31 00:00:00">2024-01-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/24/" title="算法基础数论"><img src="https://bing.img.run/rand_1366x768.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法基础数论"/></a><div class="content"><a class="title" href="/2024/01/24/" title="算法基础数论">算法基础数论</a><time datetime="2024-01-23T16:00:00.000Z" title="发表于 2024-01-24 00:00:00">2024-01-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Pengunix</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.8.0/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div></div></body></html>
